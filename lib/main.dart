@@ -8,6 +8,7 @@ import 'package:laza_mashro3/home_screen.dart';
 import 'package:laza_mashro3/categray.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
+import 'package:laza_mashro3/widgets/items_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() {

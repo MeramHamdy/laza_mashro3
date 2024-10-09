@@ -1,11 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/models/product.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 
-class ProductCubit extends Cubit<List<Product>>{
+class ProductCubit extends Cubit<ProductState>{
 //constructor //initial value of state is [] -->list empty
 //call product service in cubit
-  ProductCubit() : super([]){
+  ProductCubit() : super(ProductInitial()){
     //call to data
     getProducts();
   }
@@ -15,13 +16,13 @@ class ProductCubit extends Cubit<List<Product>>{
 
   void getProducts() async{
 
+    emit(ProductLoading());
     //handel exeption
-
     try{
       final result = await productService.getProducts();
-      emit(result);
+      emit(ProductLoaded(products: result));
     }catch(e){
-
+      emit(ProductError(message: e.toString()));
     }
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/confirm_order.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
 
@@ -80,7 +81,7 @@ class AddressScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DrawerScreen()));
+                    MaterialPageRoute(builder: (context) => ConfirmOrder()));
               },
               child: Text(
                 textAlign: TextAlign.center,
