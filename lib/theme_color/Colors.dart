@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+const black =  Colors.black;
+const white =  Colors.white;
+const red =  Colors.red;
+const greyDark =  Color(0xFF8F959E);
+const greyLight =  Color(0xFFF5F6FA);
+const greyMiddle = Color(0xffE6E6E6);
+const mainColor =  Color(0xFF9775FA);
+const bgscreen1 =   Color(0xFFB0A3E5);
+const facebook =   Color(0xFF4267B2);
+const twitter =   Color(0xFF1DA1F2);
+const google =   Color(0xFFEA4335);
+const switchBtn1 = Color(0xFFDEDBDB);
+const switchBtn2 = Color(0xFF34C759);
+const addReview = Color(0xFFFF7043);
+const star = Color(0xFFFF981F);
