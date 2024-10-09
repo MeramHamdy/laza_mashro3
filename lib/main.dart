@@ -9,7 +9,6 @@ import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  ProductDio().getProduct();
   runApp(ChangeNotifierProvider(create: (context) => ThemesProvider(),
     child: MyApp(),
   ),
