@@ -9,8 +9,9 @@ class Product {
   final List<String> images;
   final double price;
   final String category;
+  final String description;
 
 //constructor
-  Product({required this.title, required this.images, required this.price,required this.category});
+  Product({required this.title, required this.images, required this.price,required this.category,required this.description});
   factory Product.fromJson(Map<String,dynamic> json) => _$ProductFromJson(json);
 }

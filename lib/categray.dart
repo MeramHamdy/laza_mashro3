@@ -24,7 +24,7 @@ class Items extends StatelessWidget {
 
             icon: CircleAvatar(child: Icon(Icons.arrow_back_outlined,color: black,),
               backgroundColor: greyLight,)),
-        title: Text('ss',style: TextStyle(color: black),),
+        title: Text('Beauty',style: TextStyle(color: black),),
         centerTitle: true,
         actions: [
           IconButton(
@@ -46,7 +46,7 @@ class Items extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${state.products.length}', style: TextStyle(
+                  Text('${state.products.length =5 }', style: TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 17),),
                   Text('Available in stock',
                     style: TextStyle(color: greyDark, fontSize: 15),),
