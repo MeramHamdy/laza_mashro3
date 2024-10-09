@@ -11,4 +11,5 @@ class Product {
 
 //constructor
   Product({required this.title, required this.images, required this.price});
+  factory Product.fromJson(Map<String,dynamic> json) => _$ProductFromJson(json);
 }
