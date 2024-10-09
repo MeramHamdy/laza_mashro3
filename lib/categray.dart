@@ -35,23 +35,26 @@ class Items extends StatelessWidget {
       //product --> state from cubit class
       body:BlocBuilder<ProductCubit,List<Product>>(builder:(context,products){
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-        Text('${products.length}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-        Text('Available in stock',style: TextStyle(color: greyDark,fontSize:15 ),),
-    Expanded(
-    child: GridView.count(
-    crossAxisCount: 2, // Number of columns
-    crossAxisSpacing: 10.0, // Space between columns
-    mainAxisSpacing: 20.0, // Space between rows
-    padding: EdgeInsets.all(10),
-    children: List.generate(products.length, (index) {
-        return
-        CategrayWidget(product: products[index], onTap:(){});
-        })))
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+          Text('${products.length}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+          Text('Available in stock',style: TextStyle(color: greyDark,fontSize:15 ),),
+              Expanded(
+              child: GridView.count(
+              crossAxisCount: 2, // Number of columns
+              crossAxisSpacing: 10.0, // Space between columns
+              mainAxisSpacing: 20.0, // Space between rows
+              padding: EdgeInsets.all(10),
+              children: List.generate(products.length, (index) {
+          return
+          CategrayWidget(product: products[index], onTap:(){});
+          })))
 
-        ]);
+          ]),
+        );
       })
     );
   }
