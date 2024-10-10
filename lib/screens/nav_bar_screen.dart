@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
 import 'package:laza_mashro3/screens/cart_screen.dart';
-//test
+
 
 
 import '../theme_color/Colors.dart';
 import 'home_screen.dart';
+
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
