@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
+import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,8 +24,7 @@ class DrawerScreen extends StatelessWidget {
         CircleAvatar(
         backgroundColor: Colors.deepPurple,
             child: IconButton(onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => HomeScreen()));
+              Navigator.of(context).pop();
 
             },
               icon: Icon(Icons.menu),
