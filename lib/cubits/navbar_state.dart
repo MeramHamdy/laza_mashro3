@@ -18,7 +18,7 @@ part of 'navbar_cuibt.dart';
 }
 
 enum NavbarItem {
-  home,cart,wallet
+  home,cart
 }
 
 

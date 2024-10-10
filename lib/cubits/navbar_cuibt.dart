@@ -16,9 +16,7 @@ class NavBarCubit extends Cubit<NavBarState> {
       case NavbarItem.cart:
         emit(NavBarState(NavbarItem.cart, 1));
         break;
-      case NavbarItem.wallet:
-        emit(NavBarState(NavbarItem.wallet, 2));
-        break;
+
     }
   }
   // NavBarCubit() : super(NavbarInitial());

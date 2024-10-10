@@ -21,8 +21,6 @@ class BottomNavBar extends StatelessWidget {
               return HomeScreen();
             } else if (state.navbarItem == NavbarItem.cart) {
               return CartScreen();
-            } else if (state.navbarItem == NavbarItem.wallet) {
-              // return ProfileScreen();
             }
             return Container();
           }),
@@ -41,10 +39,7 @@ class BottomNavBar extends StatelessWidget {
               BottomNavigationBarItem(
                   activeIcon: Text('Cart',style: TextStyle(color: bgscreen1,fontWeight: FontWeight.w500)),
                   icon: Icon(Icons.shopping_bag_outlined), label: 'Cart'),
-              BottomNavigationBarItem(
-                  activeIcon: Text('Wallet',style: TextStyle(color: bgscreen1,fontWeight: FontWeight.w500)),
-                  icon: Icon(Icons.account_balance_wallet_outlined),
-                  label: 'Wallet')
+
             ],
             onTap: (index) {
               if (index == 0) {
@@ -53,9 +48,6 @@ class BottomNavBar extends StatelessWidget {
               } else if (index == 1) {
                 BlocProvider.of<NavBarCubit>(context)
                     .getNavBarItem(NavbarItem.cart);
-              } else if (index == 2) {
-                BlocProvider.of<NavBarCubit>(context)
-                    .getNavBarItem(NavbarItem.wallet);
               }
             },
           );
