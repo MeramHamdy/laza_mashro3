@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza_mashro3/home_screen.dart';
+import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:provider/provider.dart';
 

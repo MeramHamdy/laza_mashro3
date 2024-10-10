@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/address_screen.dart';
 import 'package:laza_mashro3/confirm_order.dart';
+import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
-import 'package:laza_mashro3/home_screen.dart';
 import 'package:laza_mashro3/categray.dart';
+import 'package:laza_mashro3/screens/home_screen.dart';
+import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/widgets/items_widget.dart';
@@ -29,10 +31,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: Provider.of<ThemesProvider>(context).currentTheme,
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => ProductCubit(),
-        child: Items(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<NavBarCubit>(
+            create: (context) => NavBarCubit(),
+          ),
+          BlocProvider<ProductCubit>(
+            create: (context) => ProductCubit(),
+          ),
+        ],
+        child: BottomNavBar(),
       ),
+
     );
   }
 }
