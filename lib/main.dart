@@ -11,7 +11,7 @@ import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
-import 'package:laza_mashro3/widgets/items_widget.dart';
+import 'package:laza_mashro3/widgets/categray_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() {
