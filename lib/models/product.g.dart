@@ -20,7 +20,7 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'title': instance.title,
       'images': instance.images,
       'price': instance.price,
-      'rating': instance.price,
+      'rating': instance.rating,
       'category': instance.category,
       'description': instance.description,
     };
