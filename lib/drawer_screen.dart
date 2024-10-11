@@ -68,7 +68,6 @@ class DrawerScreen extends StatelessWidget {
           ],
         ),
         Roow(icoon: Icons.card_giftcard, txt: "Order",widgetName: AboutApp(),),
-        Spacer(),
         Roow(icoon: Icons.privacy_tip_outlined, txt: "Privacy & Policy",widgetName:PrivacyPolicy(),),
         Roow(icoon: Icons.info_outline, txt: "About App",widgetName: AboutApp(),),
         Roow(icoon: Icons.logout, txt: "Logout",widgetName: AboutApp(),),
@@ -84,8 +83,6 @@ class Roow extends StatelessWidget {
   final IconData icoon;
   final String txt;
   final Widget widgetName;
-
-
   Roow({required this.icoon, required this.txt,required this.widgetName});
 
   @override

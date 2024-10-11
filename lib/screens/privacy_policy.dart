@@ -25,7 +25,7 @@ class PrivacyPolicy extends StatelessWidget {
 - We may share your information with trusted partners who help operate our app and conduct business, provided they maintain confidentiality.\n
         
 *User Rights*
-- You have the right to access, correct, or delete your personal information at any time. Contact us at [contact email] to exercise these rights.\n
+- You have the right to access, correct, or delete your personal information at any time. Contact us at [laza@gmail.com] to exercise these rights.\n
         
 *Policy Updates*
 - We may update this Privacy Policy periodically.
