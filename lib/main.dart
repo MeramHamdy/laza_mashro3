@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         ],
         child: BottomNavBar(),
       ),
-      //hello
+
     );
   }
 }
