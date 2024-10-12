@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
+import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/widgets/category_card.dart';
 
 
@@ -45,13 +46,7 @@ class HomeScreen extends StatelessWidget {
         }),
       ),
       drawer: Drawer(
-        child: Container(
-          width: 40,
-          decoration: BoxDecoration(
-              color: const Color(0xFFF5F6FA),
-              borderRadius: BorderRadius.circular(20)),
-          child:  DrawerScreen(),
-        ),
+        child: DrawerScreen(),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -111,7 +106,9 @@ class HomeScreen extends StatelessWidget {
                           itemCount: 6,
                           itemBuilder: (context, index)
                           {
-                            return  CategotyCard(onTap: (){},product: state.products[index],);
+                            return  CategotyCard(onTap: (){
+
+                            },product: state.products[index],);
                           });
                     }else {
                       return Center(
