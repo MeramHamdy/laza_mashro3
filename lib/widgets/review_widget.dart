@@ -17,7 +17,7 @@ class ReviewWidget extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text('name reviewer'),
+                    Text('name reviewer',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
                     Row(
                       children: [
                         Icon(Icons.access_time_outlined),
@@ -29,11 +29,11 @@ class ReviewWidget extends StatelessWidget {
                   ],
 
                 ),
-                SizedBox(width: 150,),
+                SizedBox(width: 180,),
                 Column(
                   children: [
                     Text('rating'),
-                    StarRatingWidget(num: 2,),
+                    StarRatingWidget(num: 3,),
                   ],
                 ),
               ],
