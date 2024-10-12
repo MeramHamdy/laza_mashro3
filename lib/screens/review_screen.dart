@@ -6,7 +6,7 @@ import 'package:laza_mashro3/widgets/review_widget.dart';
 import 'package:laza_mashro3/widgets/star_rating_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../models/product.dart';
+
 
 class ReviewScreen extends StatelessWidget {
   const ReviewScreen({super.key});
