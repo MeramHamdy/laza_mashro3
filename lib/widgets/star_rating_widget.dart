@@ -3,6 +3,8 @@ import 'package:laza_mashro3/models/product.dart';
 
 import 'package:laza_mashro3/theme_color/Colors.dart';
 
+import '../screens/add_review.dart';
+
 class StarRatingWidget extends StatelessWidget {
   final int num;
 
@@ -172,8 +174,8 @@ class InfoReview extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: addReview,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
           onPressed: () {
-            // Navigator.push(
-            //     context, MaterialPageRoute(builder: (context) => const AddReview()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const AddReview()));
           },
           child: const Row(
             children: [
