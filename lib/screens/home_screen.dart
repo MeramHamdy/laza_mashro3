@@ -6,6 +6,8 @@ import 'package:laza_mashro3/drawer_screen.dart';
 
 import 'package:laza_mashro3/widgets/category_card.dart';
 
+import '../theme_color/Colors.dart';
+
 
 
 
