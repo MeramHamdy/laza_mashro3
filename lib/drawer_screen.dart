@@ -38,42 +38,7 @@ class DrawerScreen extends StatelessWidget {
               ),
               subtitle: Text("mera@gmail.com"),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.light_mode_outlined,
-                  color: Colors.deepPurple,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  themeProvider.isDarkMode ? 'Light Mode' : 'Dark Mode',
-                  style: TextStyle(fontSize: 15),
-                ),
-                Spacer(),
-                Switch(
-                  value: themeProvider.isDarkMode,
-                  onChanged: (value) {
-                    themeProvider.toggleThem();
-                  },
-                  activeColor: Colors.deepPurple,
-                  activeTrackColor: Colors.white,
-                )
-              ],
-            ),
-            Roow(icoon: Icons.card_giftcard, txt: "Order",widgetName: AboutApp(),),
-            Roow(icoon: Icons.privacy_tip_outlined, txt: "Privacy & Policy",widgetName:PrivacyPolicy(),),
-            Roow(icoon: Icons.info_outline, txt: "About App",widgetName: AboutApp(),),
-            Roow(icoon: Icons.logout, txt: "Logout",widgetName: AboutApp(),),
-            SizedBox(
-              height: 50,
-            ),
-          ]),
-        ));
+
   }
 }
 

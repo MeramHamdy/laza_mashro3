@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
-import 'package:laza_mashro3/theme_color/Colors.dart';
+
 import 'package:laza_mashro3/widgets/category_card.dart';
 
 
@@ -107,7 +107,9 @@ class HomeScreen extends StatelessWidget {
                           itemCount: 6,
                           itemBuilder: (context, index)
                           {
-                            return  CategotyCard(onTap: (){},product: state.products[index],);
+                            return  CategotyCard(onTap: (){
+
+                            },product: state.products[index],);
                           });
                     }else {
                       return Center(
