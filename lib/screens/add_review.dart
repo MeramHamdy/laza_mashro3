@@ -35,7 +35,7 @@ class _AddReviewState extends State<AddReview> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -78,12 +78,25 @@ class _AddReviewState extends State<AddReview> {
               label: currentSliderValue.round().toString(),
               activeColor: mainColor,
               inactiveColor: greyLight,
-            )
+            ),
+            Spacer(),
+            
+            ElevatedButton(onPressed: (){},
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 111,vertical: 20),
+                child: Text('Submit Review',style: TextStyle(color: white),),
+              ),
+              style: ElevatedButton.styleFrom(backgroundColor: mainColor,shape: RoundedRectangleBorder()
+              )),
+
+
 
 
           ],
         ),
       ),
+
+
     );
   }
 }

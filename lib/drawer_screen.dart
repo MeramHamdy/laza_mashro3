@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/screens/privacy_policy.dart';
@@ -76,7 +77,7 @@ class DrawerScreen extends StatelessWidget {
             Roow(
               icoon: Icons.card_giftcard,
               txt: "Order",
-              widgetName: AboutApp(),
+              widgetName: ReviewScreen(),
             ),
             Roow(
               icoon: Icons.privacy_tip_outlined,
