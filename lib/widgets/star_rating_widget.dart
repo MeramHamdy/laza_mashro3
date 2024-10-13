@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/models/product.dart';
-
+import 'package:laza_mashro3/screens/add_review.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
-
-import '../screens/add_review.dart';
 
 class StarRatingWidget extends StatelessWidget {
   final int num;
