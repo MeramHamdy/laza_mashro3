@@ -8,15 +8,11 @@ import 'package:laza_mashro3/widgets/category_card.dart';
 
 import '../theme_color/Colors.dart';
 
-
-
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
@@ -38,8 +34,7 @@ class HomeScreen extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                  color: greyLight,
-                  borderRadius: BorderRadius.circular(20)),
+                  color: greyLight, borderRadius: BorderRadius.circular(20)),
               child: const Icon(Icons.menu),
             ),
             onPressed: () {
@@ -60,9 +55,7 @@ class HomeScreen extends StatelessWidget {
               const Text(
                 'Hello',
                 style: TextStyle(
-                    color: black,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold),
+                    color: black, fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Welcome to Laza',
@@ -91,65 +84,50 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 40,
-                  child: BlocBuilder<ProductCubit,ProductState>(builder: (context,state){
-                    if (state is ProductLoading) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: Color(0xFFE23E3E),
-                        ),
-                      );
-                    }else if (state is ProductError) {
-                      return Center(
-                        child: Text(state.message),
-                      );
-                    }else if (state is ProductLoaded){
-                      return ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 6,
-                          itemBuilder: (context, index)
-                          {
-                            return  CategotyCard(onTap: (){
+                height: 500,
+                child: BlocBuilder<ProductCubit, ProductState>(
+                    builder: (context, state) {
+                  if (state is ProductLoading) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xFFE23E3E),
+                      ),
+                    );
+                  } else if (state is ProductError) {
+                    return Center(
+                      child: Text(state.message),
+                    );
+                  } else if (state is ProductLoaded) {
+                    return GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        itemBuilder: (context, index) {
+                          return CategotyCard(
+                            onTap: () {},
+                            product: state.products[index],
+                          );
+                        });
 
-                            },product: state.products[index],);
-                          });
-                    }else {
-                      return Center(
+                    // ListView.builder(
+                    //
+                    //   itemCount: state.products.length,
+                    //   itemBuilder: (context, index)
+                    //   {
+                    //     return  CategotyCard(onTap: (){
+                    //
+                    //     },product: state.products[index],);
+                    //   });
+                  } else {
+                    return Center(
                       child: Text('No Response'),
-                      );
-                    }
-                  }),),
-
-               Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'New Product',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                    );
+                  }
+                }),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Container(
-                      width: 160,
-                      height: 257,
-                      color: Colors.black,
-                    ),
-                    Spacer(),
-                    Container(
-                      width: 160,
-                      height: 257,
-                      color: Colors.black,
-                    )
-                  ],
-                ),
-              )
             ],
           ),
         ),
       ),
-      
     );
   }
 }
