@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
+import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 
 class ConfirmOrder extends StatelessWidget {
@@ -8,8 +9,9 @@ class ConfirmOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: transparent,
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -18,9 +20,9 @@ class ConfirmOrder extends StatelessWidget {
               icon: CircleAvatar(
                 child: Icon(
                   Icons.arrow_back_outlined,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
-                backgroundColor: greyLight,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               )),
         ),
         body: Column(
@@ -40,7 +42,9 @@ class ConfirmOrder extends StatelessWidget {
             Text(
               'Order Confirmed!',
               style: TextStyle(
-                  color: black, fontWeight: FontWeight.bold, fontSize: 28),
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28),
             ),
             Text(
               'Your order has been confirmed, we will send you confirmation email shortly.',
@@ -52,19 +56,20 @@ class ConfirmOrder extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => HomeScreen()));
-
               },
               child: Text(
                 'Go to Orders',
                 style: TextStyle(color: greyDark, fontSize: 17),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: greyLight,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
                   minimumSize: Size(335, 50)),
             ),
-            SizedBox(height: 25,)
+            SizedBox(
+              height: 25,
+            )
           ],
         ),
         bottomNavigationBar: Container(
@@ -75,7 +80,7 @@ class ConfirmOrder extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    MaterialPageRoute(builder: (context) => BottomNavBar()));
               },
               child: Text(
                 textAlign: TextAlign.center,

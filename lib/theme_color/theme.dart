@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/theme_color/Colors.dart';
 
 ThemeData lightMode = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      background: Colors.grey.shade300,
-      primary: Colors.grey.shade900,
-    ),
+        primary: black, secondary: greyLight, tertiary: white),
     appBarTheme: AppBarTheme(
-        backgroundColor: Colors.grey.shade900,
-        foregroundColor: Colors.white
-    )
-);
+      iconTheme: IconThemeData(color: black),
+      titleTextStyle: TextStyle(color: black),
+    ));
+
 ThemeData darkMode = ThemeData(
     brightness: Brightness.dark,
     colorScheme: ColorScheme.dark(
-      background: Colors.grey.shade900,
-      primary: Colors.white,
-    ),
+        primary: white, secondary: lightDark, tertiary: bgdark),
     appBarTheme: AppBarTheme(
-        backgroundColor: Colors.grey.shade900,
-        foregroundColor: Colors.white
-    )
-);
+      iconTheme: IconThemeData(color: white),
+      titleTextStyle: TextStyle(color: white),
+    ));

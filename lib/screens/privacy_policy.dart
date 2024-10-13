@@ -7,9 +7,9 @@ class PrivacyPolicy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AboutPrivacy(
-        screenName: 'Privacy Policy',
-        txt1: 'Privacy Policy for Laza\n\n',
-        txt2: '''*Data Collection* 
+      screenName: 'Privacy Policy',
+      txt1: 'Privacy Policy for Laza\n\n',
+      txt2: '''*Data Collection* 
 - We may collect personal information such as your name, email address, and payment details when you create an account or make a purchase.
 - We also collect non-personal information, such as usage data, to improve our app’s services.\n
         
@@ -29,6 +29,8 @@ class PrivacyPolicy extends StatelessWidget {
         
 *Policy Updates*
 - We may update this Privacy Policy periodically.
-- Any changes will be communicated through updates posted on our app.''');
+- Any changes will be communicated through updates posted on our app.''',
+      addTeam: null,
+    );
   }
 }

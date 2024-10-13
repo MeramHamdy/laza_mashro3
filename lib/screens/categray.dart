@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/widgets/categray_widget.dart';
-import 'theme_color/Colors.dart';
+import '../theme_color/Colors.dart';
 
 class Items extends StatelessWidget {
   const Items({super.key});
