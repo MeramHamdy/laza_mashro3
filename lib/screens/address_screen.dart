@@ -3,7 +3,7 @@ import 'package:laza_mashro3/screens/confirm_order.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
-import 'package:laza_mashro3/widgets/drawer_screen.dart';
+import 'package:laza_mashro3/drawer_screen.dart';
 
 class AddressScreen extends StatelessWidget {
   AddressScreen({super.key});
