@@ -47,13 +47,7 @@ class HomeScreen extends StatelessWidget {
         }),
       ),
       drawer: Drawer(
-        child: Container(
-          width: 40,
-          decoration: BoxDecoration(
-              color: greyLight,
-              borderRadius: BorderRadius.circular(20)),
-          child:  DrawerScreen(),
-        ),
+        child: DrawerScreen(),
       ),
       body: SingleChildScrollView(
         child: Padding(
