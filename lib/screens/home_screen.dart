@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             width: 45,
             height: 45,
             decoration: BoxDecoration(
-                color: const Color(0xFFF5F6FA),
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(20)),
             child: const Icon(Icons.shopping_bag_outlined),
           ),
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                  color: greyLight, borderRadius: BorderRadius.circular(20)),
+                  color: Theme.of(context).colorScheme.secondary, borderRadius: BorderRadius.circular(20)),
               child: const Icon(Icons.menu),
             ),
             onPressed: () {
@@ -52,10 +52,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+               Text(
                 'Hello',
                 style: TextStyle(
-                    color: black, fontSize: 28, fontWeight: FontWeight.bold),
+                    color: Theme.of(context).colorScheme.primary, fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Welcome to Laza',
@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const Text(
                 'Choose category',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(
                 height: 500,
