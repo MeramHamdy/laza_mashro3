@@ -12,7 +12,7 @@ class CategotyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: const Color(0xFFF5F6FA),
+      color: Theme.of(context).colorScheme.secondary,
       child: Column(
         children: [
           SelectImage(product: product),
