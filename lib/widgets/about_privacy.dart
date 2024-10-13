@@ -5,16 +5,19 @@ class AboutPrivacy extends StatelessWidget {
   final String screenName;
   final String txt1;
   final String txt2;
+  final Widget? addTeam;
 
   const AboutPrivacy(
       {super.key,
       required this.screenName,
       required this.txt1,
-      required this.txt2});
+      required this.txt2,
+      required this.addTeam});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -45,7 +48,7 @@ class AboutPrivacy extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -63,13 +66,17 @@ class AboutPrivacy extends StatelessWidget {
                     TextSpan(
                       text: txt2,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.primary,
                         fontSize: 18,
                       ),
                     ),
                   ],
                 ),
               ),
+              if (addTeam != null) ...[
+                const SizedBox(height: 30),
+                addTeam!,
+              ],
             ],
           ),
         ),

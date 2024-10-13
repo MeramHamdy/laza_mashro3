@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
-import 'package:laza_mashro3/screens/home_screen.dart';
-import 'package:laza_mashro3/screens/nav_bar_screen.dart';
-import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/screens/privacy_policy.dart';
 import 'package:provider/provider.dart';
@@ -16,67 +13,32 @@ class DrawerScreen extends StatelessWidget {
 
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        SizedBox(
-          height: 50,
-        ),
-        CircleAvatar(
-            backgroundColor: Colors.deepPurple,
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.menu),
-            )),
-        SizedBox(
-          height: 20,
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            child: Icon(Icons.person),
-          ),
-          title: Text(
-            "UserName",
-          ),
-          subtitle: Text("mera@gmail.com"),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          children: [
-            Icon(
-              Icons.light_mode_outlined,
-              color: Colors.deepPurple,
-            ),
+          padding: const EdgeInsets.all(10.0),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox(
-              width: 10,
+              height: 50,
             ),
-            Text(
-              themeProvider.isDarkMode ? 'Light Mode' : 'Dark Mode',
-              style: TextStyle(fontSize: 15),
+            CircleAvatar(
+                backgroundColor: Colors.deepPurple,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.menu),
+                )),
+            SizedBox(
+              height: 20,
             ),
-            Spacer(),
-            Switch(
-              value: themeProvider.isDarkMode,
-              onChanged: (value) {
-                themeProvider.toggleThem();
-              },
-              activeColor: Colors.deepPurple,
-              activeTrackColor: Colors.white,
-            )
-          ],
-        ),
-        Roow(icoon: Icons.card_giftcard, txt: "Order",widgetName: ReviewScreen(),),
-        Roow(icoon: Icons.privacy_tip_outlined, txt: "Privacy & Policy",widgetName:PrivacyPolicy(),),
-        Roow(icoon: Icons.info_outline, txt: "About App",widgetName: AboutApp(),),
-        Roow(icoon: Icons.logout, txt: "Logout",widgetName: AboutApp(),),
-        SizedBox(
-          height: 50,
-        ),
-      ]),
-    ));
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.person),
+              ),
+              title: Text(
+                "UserName",
+              ),
+              subtitle: Text("mera@gmail.com"),
+            ),
+
   }
 }
 
@@ -92,7 +54,7 @@ class Roow extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap:  (){  Navigator.push(context,
-        MaterialPageRoute(builder: (context) => widgetName));},
+            MaterialPageRoute(builder: (context) => widgetName));},
         child: Row(
           children: [
             Icon(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:laza_mashro3/confirm_order.dart';
+import 'package:laza_mashro3/screens/confirm_order.dart';
+import 'package:laza_mashro3/screens/home_screen.dart';
+import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
 
@@ -15,21 +17,24 @@ class AddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         appBar: AppBar(
-          backgroundColor: white,
+          backgroundColor: transparent,
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               icon: CircleAvatar(
                 child: Icon(
                   Icons.arrow_back_outlined,
-                  color: black,
+                  color: Theme.of(context).iconTheme.color,
                 ),
-                backgroundColor: greyLight,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               )),
           centerTitle: true,
           title: Text(
             'Address',
-            style: TextStyle(color: black, fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
           ),
         ),
         body: Padding(
@@ -118,13 +123,13 @@ class TextField extends StatelessWidget {
           TextFormField(
               controller: controller,
               decoration: InputDecoration(
-                fillColor: greyLight,
+                fillColor: Theme.of(context).colorScheme.secondary,
                 filled: true,
                 hintText: hint,
                 hintStyle: TextStyle(color: greyDark),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: greyLight,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),

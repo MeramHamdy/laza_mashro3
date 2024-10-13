@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
-import 'package:laza_mashro3/screens/review_screen.dart';
+
 import 'package:laza_mashro3/widgets/category_card.dart';
 
 
@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
    
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                  color: const Color(0xFFF5F6FA),
+                  color: greyLight,
                   borderRadius: BorderRadius.circular(20)),
               child: const Icon(Icons.menu),
             ),
@@ -57,13 +58,13 @@ class HomeScreen extends StatelessWidget {
               const Text(
                 'Hello',
                 style: TextStyle(
-                    color: Colors.black,
+                    color: black,
                     fontSize: 28,
                     fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Welcome to Laza',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: greyDark),
               ),
               const SizedBox(
                 height: 15,
@@ -71,7 +72,7 @@ class HomeScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color(0xFFF5F6FA),
+                    fillColor: Theme.of(context).colorScheme.secondary,
                     prefixIcon: const Icon(Icons.search),
                     prefixIconColor: Colors.grey,
                     hintText: 'Search...',

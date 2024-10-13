@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_mashro3/address_screen.dart';
-import 'package:laza_mashro3/confirm_order.dart';
+import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/screens/confirm_order.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
-import 'package:laza_mashro3/categray.dart';
+import 'package:laza_mashro3/screens/categray.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
         ],
         child: BottomNavBar(),
       ),
-
     );
   }
 }

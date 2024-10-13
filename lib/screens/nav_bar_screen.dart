@@ -1,46 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
-import 'package:laza_mashro3/screens/cart_screen.dart';
-
-
+import 'package:laza_mashro3/screens/address_screen.dart';
 
 import '../theme_color/Colors.dart';
 import 'home_screen.dart';
-
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: BlocBuilder<NavBarCubit, NavBarState>(
-          builder: (context, state) {
-            if (state.navbarItem == NavbarItem.home) {
-              return HomeScreen();
-            } else if (state.navbarItem == NavbarItem.cart) {
-              return CartScreen();
-            }
-            return Container();
-          }),
-
+      body: BlocBuilder<NavBarCubit, NavBarState>(builder: (context, state) {
+        if (state.navbarItem == NavbarItem.home) {
+          return HomeScreen();
+        } else if (state.navbarItem == NavbarItem.cart) {
+          return AddressScreen();
+        }
+        return Container();
+      }),
       bottomNavigationBar: BlocBuilder<NavBarCubit, NavBarState>(
         builder: (context, state) {
           return BottomNavigationBar(
+            backgroundColor: Theme.of(context).colorScheme.secondary,
             currentIndex: state.index,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-
             items: const [
               BottomNavigationBarItem(
-                  activeIcon: Text('Home',style: TextStyle(color: bgscreen1,fontWeight: FontWeight.w500),),
-                  icon: Icon(Icons.home_outlined), label: 'Home'),
+                  activeIcon: Text(
+                    'Home',
+                    style: TextStyle(
+                        color: bgscreen1, fontWeight: FontWeight.w500),
+                  ),
+                  icon: Icon(Icons.home_outlined),
+                  label: 'Home'),
               BottomNavigationBarItem(
-                  activeIcon: Text('Cart',style: TextStyle(color: bgscreen1,fontWeight: FontWeight.w500)),
-                  icon: Icon(Icons.shopping_bag_outlined), label: 'Cart'),
-
+                  activeIcon: Text('Cart',
+                      style: TextStyle(
+                          color: bgscreen1, fontWeight: FontWeight.w500)),
+                  icon: Icon(Icons.shopping_bag_outlined),
+                  label: 'Cart'),
             ],
             onTap: (index) {
               if (index == 0) {
@@ -54,8 +55,6 @@ class BottomNavBar extends StatelessWidget {
           );
         },
       ),
-
     );
   }
 }
-
