@@ -15,7 +15,7 @@ class CategrayWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          color: Theme.of(context).colorScheme.secondary, // Different color for each item
+          color: Theme.of(context).colorScheme.secondary,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
