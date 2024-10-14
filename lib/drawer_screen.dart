@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
