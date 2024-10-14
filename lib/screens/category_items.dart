@@ -95,7 +95,6 @@ class CategoryItems extends StatelessWidget {
                     // If category doesn't match specific ones, show all products
                     filteredProducts = state.products;
                   }
-
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -116,8 +115,8 @@ class CategoryItems extends StatelessWidget {
                               child: GridView.count(
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.0,
-                                  mainAxisSpacing: 20.0,
-                                  padding: EdgeInsets.all(10),
+                                  mainAxisSpacing: 10.0,
+                                  padding: EdgeInsets.all(5),
                                   children: List.generate(
                                       filteredProducts.length, (index) {
                                     final product = filteredProducts[index];

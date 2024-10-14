@@ -10,27 +10,31 @@ class CategrayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
+    return GestureDetector(
         onTap: onTap,
-        child: Container(
-          color: Theme.of(context).colorScheme.secondary,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Image.network(
-                  product.images[0],
-                  fit: BoxFit.cover,
+        child:
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              color: Theme.of(context).colorScheme.secondary,
+              child:Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Image.network(
+                        product.images[0],
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                    Text(product.title),
+                    Text('${product.price.toString()}\$'),
+                  ],
                 ),
               ),
-              Text(product.title),
-              Text('${product.price.toString()}\$'),
-            ],
-          ),
-        ),
-      ),
+            )
+
+
     );
   }
 }
