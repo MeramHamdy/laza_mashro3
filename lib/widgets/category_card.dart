@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:laza_mashro3/models/product.dart';
 
+//card
 class CategoryCard extends StatelessWidget {
   final Product product;
   final VoidCallback onTap;
@@ -18,7 +19,7 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           children: [
             SelectImage(product: product),
-
+            const SizedBox(height: 5,),
             Text(
               product.category,
               style: const TextStyle(fontWeight: FontWeight.w500),
