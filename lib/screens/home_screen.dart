@@ -103,24 +103,15 @@ class HomeScreen extends StatelessWidget {
                         return GridView.builder(
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2),
+                            itemCount: state.products.length,
                             itemBuilder: (context, index) {
                               return CategoryCard(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ReviewScreen(review: state.products[index].reviews.first)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ReviewScreen(product: state.products[index])));
                                 },
                                 product: state.products[index],
                               );
                             });
-
-                        // ListView.builder(
-                        //
-                        //   itemCount: state.products.length,
-                        //   itemBuilder: (context, index)
-                        //   {
-                        //     return  CategotyCard(onTap: (){
-                        //
-                        //     },product: state.products[index],);
-                        //   });
                       } else {
                         return Center(
                           child: Text('No Response'),
@@ -135,3 +126,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+// ListView.builder(
+//
+//   itemCount: state.products.length,
+//   itemBuilder: (context, index)
+//   {
+//     return  CategotyCard(onTap: (){
+//
+//     },product: state.products[index],);
+//   });
