@@ -116,17 +116,15 @@ class _AddReviewState extends State<AddReview> {
                       builder: (context, review) {
                         return ElevatedButton(
                             onPressed: () {
-                              // final newReview = Reviews(reviewerName: controllerName.text,
-                              //     comment: controllerComment.text,
-                              //     rating: currentSliderValue.toInt(),
-                              //     date: DateTime.now().toString());
+                              final newReview = Reviews(
+                                reviewerName: controllerName.text,
+                                comment: controllerComment.text,
+                                rating: currentSliderValue.toInt(),
+                                date: DateTime.now().toString(),
+                              );
 
-                              context.read<AddReviewCubit>().addReview(Reviews(
-                                  reviewerName: controllerName.text,
-                                  comment: controllerComment.text,
-                                  rating: currentSliderValue.toInt(),
-                                  date: DateTime.now().toString()));
-                              Navigator.pop(context);
+                              // Pass the new review back to the previous screen
+                              Navigator.pop(context, newReview);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: mainColor,
