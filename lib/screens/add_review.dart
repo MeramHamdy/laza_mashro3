@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/cubits/add_review.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 
+import '../widgets/reviews.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
 class AddReview extends StatefulWidget {
+
   const AddReview({super.key});
 
   @override
@@ -9,8 +15,11 @@ class AddReview extends StatefulWidget {
 }
 
 class _AddReviewState extends State<AddReview> {
+  TextEditingController controllerName = TextEditingController();
+  TextEditingController controllerComment = TextEditingController();
+  VoidCallback submit = () {};
+  double currentSliderValue = 0;
 
-   double currentSliderValue = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,68 +40,86 @@ class _AddReviewState extends State<AddReview> {
               Icons.arrow_back,
             ),
           ),
-          onPressed: () {Navigator.pop(context);},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Name',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-            TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color(0xFFF5F6FA),
-                  hintText: 'Type your name',
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide.none)),
-            ),
-            const SizedBox(height: 7,),
-            const Text('How was your experience ?',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-            const SizedBox(height: 7,),
-            TextField(
-              decoration: InputDecoration(
-
-                  filled: true,
-                  fillColor: const Color(0xFFF5F6FA),
-                  hintText: 'Describe your experience?',
-                  hintStyle: const TextStyle(color: Colors.grey,
-                  height: 10),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide.none)),
-            ),
-            const SizedBox(height: 7,),
-            const Text('Star',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-            const SizedBox(height: 7,),
-            Slider(value: currentSliderValue, onChanged: (double value){
-              setState(() {
-                currentSliderValue= value;
-              });
-            },
-            max: 5,
-              divisions: 5,
-              label: currentSliderValue.round().toString(),
-              activeColor: mainColor,
-              inactiveColor: greyLight,
-            ),
-            Spacer(),
-            
-            ElevatedButton(onPressed: (){},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 111,vertical: 20),
-                child: Text('Submit Review',style: TextStyle(color: white),),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Name',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+              TextField(
+                controller: controllerName,
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color(0xFFF5F6FA),
+                    hintText: 'Type your name',
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide.none)),
               ),
-              style: ElevatedButton.styleFrom(backgroundColor: mainColor,shape: RoundedRectangleBorder()
-              )),
+              const SizedBox(height: 7,),
+              const Text('How was your experience ?',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+              const SizedBox(height: 7,),
+              TextField(
+                controller: controllerComment,
+                decoration: InputDecoration(
+        
+                    filled: true,
+                    fillColor: const Color(0xFFF5F6FA),
+                    hintText: 'Describe your experience?',
+                    hintStyle: const TextStyle(color: Colors.grey,
+                        height: 10),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide.none)),
+              ),
+              const SizedBox(height: 7,),
+              const Text('Star',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+              const SizedBox(height: 7,),
+              Slider(value: currentSliderValue,
+                onChanged: (double value) {
+                  setState(() {
+                    currentSliderValue = value;
+                  });
+                },
+                max: 5,
+                divisions: 5,
+                label: currentSliderValue.round().toString(),
+                activeColor: mainColor,
+                inactiveColor: greyLight,
+              ),
 
+        
+              ElevatedButton(onPressed: () {
+                final newReview = Reviews(reviewerName: controllerName.text,
+                    comment: controllerComment.text,
+                    rating: currentSliderValue.toInt(),
+                    date: DateTime.now().toString());
 
+                 context.read<AddReviewCubit>().addReview(newReview);
+                 Navigator.pop(context);
+              },
 
-
-          ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 111, vertical: 20),
+                    child: Text('Submit Review', style: TextStyle(color: white),),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: mainColor, shape: RoundedRectangleBorder()
+                  )),
+        
+            ],
+          ),
         ),
       ),
 
