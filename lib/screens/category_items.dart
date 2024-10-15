@@ -66,7 +66,6 @@ class CategoryItems extends StatelessWidget {
                 )),
           ],
         ),
-        //product --> state from cubit class
         body: Provider<ProductCubit>(
             create: (_) => ProductCubit(),
             builder: (context, child) {

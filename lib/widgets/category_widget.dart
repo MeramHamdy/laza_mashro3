@@ -27,7 +27,7 @@ class CategrayWidget extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    Text(product.title),
+                    Text(product.title, style: TextStyle(fontWeight: FontWeight.bold),),
                     Text('${product.price.toString()}\$'),
                   ],
                 ),
