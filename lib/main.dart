@@ -30,23 +30,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: Provider.of<ThemesProvider>(context).currentTheme,
-      debugShowCheckedModeBanner: false,
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider<NavBarCubit>(
-            create: (context) => NavBarCubit(),
-          ),
-          BlocProvider<ProductCubit>(
-            create: (context) => ProductCubit(),
-          ),
-          BlocProvider<AddReviewCubit>(
-            create: (context) => AddReviewCubit(),
-          )
-        ],
-        child: BottomNavBar(),
-      ),
-    );
+    return Consumer<ThemesProvider>(builder: (context, themesProvider, child) {
+      return MaterialApp(
+        theme: themesProvider.currentTheme,
+        debugShowCheckedModeBanner: false,
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider<NavBarCubit>(
+              create: (context) => NavBarCubit(),
+            ),
+            BlocProvider<ProductCubit>(
+              create: (context) => ProductCubit(),
+            ),
+            BlocProvider<AddReviewCubit>(
+              create: (context) => AddReviewCubit(),
+            )
+          ],
+          child: BottomNavBar(),
+        ),
+      );
+    });
   }
 }

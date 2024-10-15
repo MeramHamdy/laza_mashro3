@@ -68,7 +68,7 @@ class DrawerScreen extends StatelessWidget {
                 Switch(
                   value: themeProvider.isDarkMode,
                   onChanged: (value) {
-                    themeProvider.toggleThem();
+                    themeProvider.toggleTheme();
                   },
                   activeColor: mainColor,
                   activeTrackColor: white,

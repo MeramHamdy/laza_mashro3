@@ -138,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             })),
                       );
                     } else {
-                      filteredProducts = state.products;
 
                       return GridView(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
