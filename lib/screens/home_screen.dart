@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
+import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
 
 import 'package:laza_mashro3/widgets/category_card.dart';
@@ -107,9 +108,11 @@ class HomeScreen extends StatelessWidget {
                                        Navigator.push(context,
                                            MaterialPageRoute(
                                                builder: (context) =>
-
-                                                   ReviewScreen(product: state
-                                                       .products[0])));
+                                                    CategoryItems(category: state.products[0].category)
+                                                   // ReviewScreen(product: state
+                                                   //     .products[0])
+                                           )
+                                       );
                                      },
                                      product: state.products[0],
                                      id: state.products[0].id,
@@ -120,8 +123,8 @@ class HomeScreen extends StatelessWidget {
                                     MaterialPageRoute(
                                         builder: (context) =>
 
-                                            ReviewScreen(product: state
-                                                .products[1])));
+                                            CategoryItems(category: state.products[5].category)
+                                    ));
                               },
                               product: state.products[5],
                               id: state.products[5].id,
@@ -132,8 +135,7 @@ class HomeScreen extends StatelessWidget {
                                     MaterialPageRoute(
                                         builder: (context) =>
 
-                                            ReviewScreen(product: state
-                                                .products[2])));
+                                            CategoryItems(category: state.products[11].category)));
                               },
                               product: state.products[11],
                               id: state.products[11].id,
@@ -144,8 +146,8 @@ class HomeScreen extends StatelessWidget {
                                     MaterialPageRoute(
                                         builder: (context) =>
 
-                                            ReviewScreen(product: state
-                                                .products[3])));
+                                            CategoryItems(category: state.products[19].category)
+                                    ));
                               },
                               product: state.products[19],
                               id: state.products[19].id,
