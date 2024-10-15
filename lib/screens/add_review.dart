@@ -21,10 +21,15 @@ class _AddReviewState extends State<AddReview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
-        title: const Text(
+        backgroundColor: transparent,
+        title: Text(
           'Add Reviews',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold,
+              fontSize: 17),
         ),
         centerTitle: true,
         leading: IconButton(
@@ -32,10 +37,11 @@ class _AddReviewState extends State<AddReview> {
             width: 45,
             height: 45,
             decoration: BoxDecoration(
-                color: const Color(0xFFF5F6FA),
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(20)),
-            child: const Icon(
+            child: Icon(
               Icons.arrow_back,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
           onPressed: () {
@@ -57,9 +63,9 @@ class _AddReviewState extends State<AddReview> {
                 controller: controllerName,
                 decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color(0xFFF5F6FA),
+                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: 'Type your name',
-                    hintStyle: const TextStyle(color: Colors.grey),
+                    hintStyle: TextStyle(color: greyDark),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none)),
@@ -78,9 +84,9 @@ class _AddReviewState extends State<AddReview> {
                 controller: controllerComment,
                 decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color(0xFFF5F6FA),
+                    fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: 'Describe your experience?',
-                    hintStyle: const TextStyle(color: Colors.grey, height: 10),
+                    hintStyle: const TextStyle(color: greyDark, height: 10),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none)),
@@ -108,36 +114,35 @@ class _AddReviewState extends State<AddReview> {
                 activeColor: mainColor,
                 inactiveColor: greyLight,
               ),
-
               Provider<AddReviewCubit>(
                 create: (_) => AddReviewCubit(),
                 builder: (context, child) {
                   return BlocBuilder<AddReviewCubit, List<Reviews>>(
                       builder: (context, review) {
-                        return ElevatedButton(
-                            onPressed: () {
-                              final newReview = Reviews(
-                                reviewerName: controllerName.text,
-                                comment: controllerComment.text,
-                                rating: currentSliderValue.toInt(),
-                                date: DateTime.now().toString(),
-                              );
+                    return ElevatedButton(
+                        onPressed: () {
+                          final newReview = Reviews(
+                            reviewerName: controllerName.text,
+                            comment: controllerComment.text,
+                            rating: currentSliderValue.toInt(),
+                            date: DateTime.now().toString(),
+                          );
 
-                              // Pass the new review back to the previous screen
-                              Navigator.pop(context, newReview);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: mainColor,
-                                shape: const RoundedRectangleBorder()),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 111, vertical: 20),
-                              child: Text(
-                                'Submit Review',
-                                style: TextStyle(color: white),
-                              ),
-                            ));
-                      });
+                          // Pass the new review back to the previous screen
+                          Navigator.pop(context, newReview);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: mainColor,
+                            shape: const RoundedRectangleBorder()),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 111, vertical: 20),
+                          child: Text(
+                            'Submit Review',
+                            style: TextStyle(color: white),
+                          ),
+                        ));
+                  });
                 },
               ),
             ],

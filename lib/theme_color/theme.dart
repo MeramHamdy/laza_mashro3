@@ -4,7 +4,10 @@ import 'package:laza_mashro3/theme_color/Colors.dart';
 ThemeData lightMode = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-        primary: black, secondary: greyLight, tertiary: white),
+      primary: black,
+      secondary: greyLight,
+      tertiary: white,
+    ),
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(color: black),
       titleTextStyle: TextStyle(color: black),
