@@ -144,54 +144,55 @@ class StarRatingWidget extends StatelessWidget {
   }
 }
 
-class InfoReview extends StatelessWidget {
-  final Product product;
-  const InfoReview({super.key,required this.product});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-
-      children: [
-         Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: [
-
-          Text('3 Reviews',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-          Row(
-            children: [
-              Text(product.rating.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
-              StarRatingWidget(
-                num:
-                 product.rating.toInt(),
-              )
-            ],
-          ),
-        ]),
-        const Spacer(),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: addReview,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const AddReview()));
-          },
-          child: const Row(
-            children: [
-              Icon(
-                Icons.mode_edit_outline_outlined,
-                color: Colors.white,
-              ),
-              Text(
-                'Add Review',
-                style: TextStyle(color: white),
-              )
-            ],
-          ),
-        )
-      ],
-    );
-
-  }
-}
+// class InfoReview extends StatelessWidget {
+//   final Product product;
+//   const InfoReview({super.key,required this.product});
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//
+//       children: [
+//          Column(
+//              crossAxisAlignment: CrossAxisAlignment.start,
+//              children: [
+//
+//           Text('3 Reviews',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+//           Row(
+//             children: [
+//               Text(product.rating.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
+//               StarRatingWidget(
+//                 num:
+//                  product.rating.toInt(),
+//               )
+//             ],
+//           ),
+//         ]),
+//         const Spacer(),
+//         ElevatedButton(
+//           style: ElevatedButton.styleFrom(backgroundColor: addReview,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+//           onPressed: () {
+//             Navigator.push(
+//                 context, MaterialPageRoute(builder: (context) => const AddReview()));
+//           },
+//           child: const Row(
+//             children: [
+//               Icon(
+//                 Icons.mode_edit_outline_outlined,
+//                 color: Colors.white,
+//               ),
+//               Text(
+//                 'Add Review',
+//                 style: TextStyle(color: white),
+//               )
+//             ],
+//           ),
+//         )
+//       ],
+//     );
+//
+//   }
+// }
 
 
