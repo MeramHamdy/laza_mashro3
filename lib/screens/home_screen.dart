@@ -3,16 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
+import 'package:laza_mashro3/models/product.dart';
 import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
 
 import 'package:laza_mashro3/widgets/category_card.dart';
+import 'package:laza_mashro3/widgets/category_widget.dart';
 
 import '../theme_color/Colors.dart';
 //home
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String searchQuery = "";
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +46,8 @@ class HomeScreen extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary, borderRadius: BorderRadius.circular(20)),
+                  color: Theme.of(context).colorScheme.secondary,
+                  borderRadius: BorderRadius.circular(20)),
               child: const Icon(Icons.menu),
             ),
             onPressed: () {
@@ -58,7 +68,9 @@ class HomeScreen extends StatelessWidget {
               Text(
                 'Hello',
                 style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary, fontSize: 28, fontWeight: FontWeight.bold),
+                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Welcome to Laza',
@@ -68,6 +80,12 @@ class HomeScreen extends StatelessWidget {
                 height: 15,
               ),
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value
+                        .toLowerCase(); // Update search query on text change
+                  });
+                },
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.secondary,
@@ -82,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const Text(
+               Text(
                 'Choose category',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
@@ -90,95 +108,120 @@ class HomeScreen extends StatelessWidget {
                 height: 500,
                 child: BlocBuilder<ProductCubit, ProductState>(
                     builder: (context, state) {
-                      if (state is ProductLoading) {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            color: Color(0xFFE23E3E),
-                          ),
-                        );
-                      } else if (state is ProductError) {
-                        return Center(
-                          child: Text(state.message),
-                        );
-                      } else if (state is ProductLoaded) {
-                        return GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                          children: [
+                  if (state is ProductLoading) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xFFE23E3E),
+                      ),
+                    );
+                  } else if (state is ProductError) {
+                    return Center(
+                      child: Text(state.message),
+                    );
+                  } else if (state is ProductLoaded) {
+                    List<Product> filteredProducts;
+                    if (searchQuery.isNotEmpty) {
+                      filteredProducts = state.products.where((product) =>
+                          product.title.toLowerCase().contains(searchQuery.toLowerCase())).toList();
+                      return Container(
+                        height: MediaQuery.of(context).size.height,
+                        child: GridView.count(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            padding: EdgeInsets.all(5),
+                            children:
+                                List.generate(filteredProducts.length, (index) {
+                              final product = filteredProducts[index];
+                              return CategrayWidget(
+                                  product: product, onTap: () {});
+                            })),
+                      );
+                    } else {
+                      filteredProducts = state.products;
+
+                      return GridView(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        children: [
                           CategoryCard(
-                                     onTap: () {
-                                       Navigator.push(context,
-                                           MaterialPageRoute(
-                                               builder: (context) =>
-                                                    CategoryItems(category: state.products[0].category)
-                                                   // ReviewScreen(product: state
-                                                   //     .products[0])
-                                           )
-                                       );
-                                     },
-                                     product: state.products[0],
-                                     id: state.products[0].id,
-                                   ),
-                            CategoryCard(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-
-                                            CategoryItems(category: state.products[5].category)
-                                    ));
-                              },
-                              product: state.products[5],
-                              id: state.products[5].id,
-                            ),
-                            CategoryCard(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-
-                                            CategoryItems(category: state.products[11].category)));
-                              },
-                              product: state.products[11],
-                              id: state.products[11].id,
-                            ),
-                            CategoryCard(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-
-                                            CategoryItems(category: state.products[19].category)
-                                    ));
-                              },
-                              product: state.products[19],
-                              id: state.products[19].id,
-                            )
-                          ],
-                        );
-                          // GridView.builder(
-                          //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          //       crossAxisCount: 2),
-                          //   itemCount: state.products.length,
-                          //   itemBuilder: (context, index) {
-                          //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
-                          //          return CategoryCard(
-                          //            onTap: () {
-                          //              Navigator.push(context,
-                          //                  MaterialPageRoute(
-                          //                      builder: (context) =>
-                          //                          ReviewScreen(product: state
-                          //                              .products[index])));
-                          //            },
-                          //            product: state.products[index],
-                          //            id: state.products[index].id,
-                          //          );
-                          //        }
-                          //   });
-                      } else {
-                        return Center(
-                          child: Text('No Response'),
-                        );
-                      }
-                    }),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryItems(
+                                          category: state.products[0].category)
+                                      // ReviewScreen(product: state
+                                      //     .products[0])
+                                      ));
+                            },
+                            product: state.products[0],
+                            id: state.products[0].id,
+                          ),
+                          CategoryCard(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryItems(
+                                          category:
+                                              state.products[5].category)));
+                            },
+                            product: state.products[5],
+                            id: state.products[5].id,
+                          ),
+                          CategoryCard(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryItems(
+                                          category:
+                                              state.products[11].category)));
+                            },
+                            product: state.products[11],
+                            id: state.products[11].id,
+                          ),
+                          CategoryCard(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryItems(
+                                          category:
+                                              state.products[19].category)));
+                            },
+                            product: state.products[19],
+                            id: state.products[19].id,
+                          )
+                        ],
+                      );
+                    }
+                    // GridView.builder(
+                    //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //       crossAxisCount: 2),
+                    //   itemCount: state.products.length,
+                    //   itemBuilder: (context, index) {
+                    //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
+                    //          return CategoryCard(
+                    //            onTap: () {
+                    //              Navigator.push(context,
+                    //                  MaterialPageRoute(
+                    //                      builder: (context) =>
+                    //                          ReviewScreen(product: state
+                    //                              .products[index])));
+                    //            },
+                    //            product: state.products[index],
+                    //            id: state.products[index].id,
+                    //          );
+                    //        }
+                    //   });
+                  } else {
+                    return Center(
+                      child: Text('No Response'),
+                    );
+                  }
+                }),
               ),
             ],
           ),

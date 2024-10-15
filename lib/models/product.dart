@@ -6,7 +6,7 @@ part 'product.g.dart';
 @JsonSerializable()
 class Product {
   final int id;
-  final String title;
+   String title;
   final List<String> images;
   final double price;
   final double rating;
