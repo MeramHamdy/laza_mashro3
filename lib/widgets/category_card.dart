@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:laza_mashro3/models/product.dart';
 
-class CategotyCard extends StatelessWidget {
+class CategoryCard extends StatelessWidget {
   final Product product;
   final VoidCallback onTap;
 
-  const CategotyCard({super.key, required this.product, required this.onTap});
+  const CategoryCard({super.key, required this.product, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,7 @@ class CategotyCard extends StatelessWidget {
         child: Column(
           children: [
             SelectImage(product: product),
-            const SizedBox(
-              height: 5,
-            ),
+
             Text(
               product.category,
               style: const TextStyle(fontWeight: FontWeight.w500),

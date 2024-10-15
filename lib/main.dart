@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laza_mashro3/cubits/add_review.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
 import 'package:laza_mashro3/screens/confirm_order.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<ProductCubit>(
             create: (context) => ProductCubit(),
           ),
+          BlocProvider<AddReviewCubit>(
+            create: (context) => AddReviewCubit(),
+          )
         ],
         child: BottomNavBar(),
       ),

@@ -78,7 +78,7 @@ class DrawerScreen extends StatelessWidget {
             Roow(
               icoon: Icons.card_giftcard,
               txt: "Order",
-              widgetName: ReviewScreen(),
+              widgetName: AboutApp(),
             ),
             Roow(
               icoon: Icons.privacy_tip_outlined,
