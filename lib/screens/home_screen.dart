@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             width: 45,
             height: 45,
+
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(20)),
@@ -174,9 +175,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CategoryItems(
-                                          category:
-                                              state.products[11].category)));
+                                      builder: (context) =>          ReviewScreen(product: state
+                                          .products[2])
+                                  ));
                             },
                             product: state.products[11],
                             id: state.products[11].id,
