@@ -51,48 +51,7 @@ class ReviewScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
-                    '3 Reviews',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  Row(
-                    children: [
-                      Text(review[0].rating.toString(),
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      StarRatingWidget(
-                        num: review[0].rating!.toInt(),
-                      )
-                    ],
-                  ),
-                ]),
-                const Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: addreview,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddReview()));
-                  },
-                  child: const Row(
-                    children: [
-                      Icon(
-                        Icons.mode_edit_outline_outlined,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        'Add Review',
-                        style: TextStyle(color: white),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+
             Provider<ProductCubit>(create: (_) => ProductCubit(),
               builder: (context, child) {
                 return BlocBuilder<ProductCubit, ProductState>(
@@ -115,8 +74,55 @@ class ReviewScreen extends StatelessWidget {
                           child: ListView.builder(
                             itemCount: product.reviews.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return ReviewWidget(
-                                review: review[index],
+                              return Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        Text(
+                                          '${review.length} Reviews',
+                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(product.rating.toString(),
+                                                style: TextStyle(fontWeight: FontWeight.bold)),
+                                            StarRatingWidget(
+                                              num: product.rating.toInt(),
+                                            )
+                                          ],
+                                        ),
+                                      ]),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: addreview,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(5))),
+                                        onPressed: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => AddReview()));
+                                        },
+                                        child: const Row(
+                                          children: [
+                                            Icon(
+                                              Icons.mode_edit_outline_outlined,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              'Add Review',
+                                              style: TextStyle(color: white),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+
+                                  ReviewWidget(
+                                    review: review[index],
+                                  ),
+                                ],
                               );
                             },
                           ),
