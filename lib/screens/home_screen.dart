@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
-import 'package:laza_mashro3/screens/review_screen.dart';
+
 
 import 'package:laza_mashro3/widgets/category_card.dart';
 
@@ -103,9 +103,7 @@ class HomeScreen extends StatelessWidget {
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
                         itemBuilder: (context, index) {
-                          return CategoryCard(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> ReviewScreen(review: state.products[index].reviews.first)));
+
                             },
                             product: state.products[index],
                           );

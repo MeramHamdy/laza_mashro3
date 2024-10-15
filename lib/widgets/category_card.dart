@@ -18,7 +18,7 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           children: [
             SelectImage(product: product),
-            const SizedBox(height: 5,),
+
             Text(
               product.category,
               style: const TextStyle(fontWeight: FontWeight.w500),
