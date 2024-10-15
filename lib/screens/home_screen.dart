@@ -100,18 +100,77 @@ class HomeScreen extends StatelessWidget {
                           child: Text(state.message),
                         );
                       } else if (state is ProductLoaded) {
-                        return GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2),
-                            itemCount: state.products.length,
-                            itemBuilder: (context, index) {
-                              return CategoryCard(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ReviewScreen(product: state.products[index])));
-                                },
-                                product: state.products[index],
-                              );
-                            });
+                        return GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                          children: [
+                          CategoryCard(
+                                     onTap: () {
+                                       Navigator.push(context,
+                                           MaterialPageRoute(
+                                               builder: (context) =>
+
+                                                   ReviewScreen(product: state
+                                                       .products[0])));
+                                     },
+                                     product: state.products[0],
+                                     id: state.products[0].id,
+                                   ),
+                            CategoryCard(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+
+                                            ReviewScreen(product: state
+                                                .products[1])));
+                              },
+                              product: state.products[5],
+                              id: state.products[5].id,
+                            ),
+                            CategoryCard(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+
+                                            ReviewScreen(product: state
+                                                .products[2])));
+                              },
+                              product: state.products[11],
+                              id: state.products[11].id,
+                            ),
+                            CategoryCard(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+
+                                            ReviewScreen(product: state
+                                                .products[3])));
+                              },
+                              product: state.products[19],
+                              id: state.products[19].id,
+                            )
+                          ],
+                        );
+                          // GridView.builder(
+                          //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          //       crossAxisCount: 2),
+                          //   itemCount: state.products.length,
+                          //   itemBuilder: (context, index) {
+                          //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
+                          //          return CategoryCard(
+                          //            onTap: () {
+                          //              Navigator.push(context,
+                          //                  MaterialPageRoute(
+                          //                      builder: (context) =>
+                          //                          ReviewScreen(product: state
+                          //                              .products[index])));
+                          //            },
+                          //            product: state.products[index],
+                          //            id: state.products[index].id,
+                          //          );
+                          //        }
+                          //   });
                       } else {
                         return Center(
                           child: Text('No Response'),

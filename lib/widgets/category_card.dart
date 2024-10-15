@@ -4,30 +4,34 @@ import 'package:laza_mashro3/models/product.dart';
 
 //card
 class CategoryCard extends StatelessWidget {
+  final int id;
   final Product product;
   final VoidCallback onTap;
 
-  const CategoryCard({super.key, required this.product, required this.onTap});
+  const CategoryCard({super.key, required this.product, required this.onTap, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Theme.of(context).colorScheme.secondary,
-        child: Column(
-          children: [
-            SelectImage(product: product),
-            const SizedBox(height: 5,),
-            Text(
-              product.category,
-              style: const TextStyle(fontWeight: FontWeight.w500),
-            ),
-          ],
+
+      return GestureDetector(
+        onTap: onTap,
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color: Theme.of(context).colorScheme.secondary,
+          child: Column(
+            children: [
+              SelectImage(product: product),
+              const SizedBox(height: 5,),
+              Text(
+                product.category,
+                style: const TextStyle(fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+
+
   }
 }
 
