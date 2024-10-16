@@ -4,6 +4,7 @@ import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
 import 'package:laza_mashro3/models/product.dart';
+import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
 
@@ -38,7 +39,20 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(20)),
-            child: const Icon(Icons.shopping_bag_outlined),
+            child: IconButton(
+              icon: Container(
+                width: 45,
+                height: 45,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(20)),
+                child: const Icon(Icons.shopping_bag_outlined),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => CartScreen()));
+              },
+            ),
           ),
         ],
         leading: Builder(builder: (context) {
@@ -189,8 +203,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ReviewScreen(
-                                                  product: state.products[2])));
+                                              CategoryItems(
+                                                  category:
+                                                  state.products[11].category)));
                                 },
                                 product: state.products[11],
                                 id: state.products[11].id,
@@ -212,25 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           );
                         }
-                        // GridView.builder(
-                        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        //       crossAxisCount: 2),
-                        //   itemCount: state.products.length,
-                        //   itemBuilder: (context, index) {
-                        //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
-                        //          return CategoryCard(
-                        //            onTap: () {
-                        //              Navigator.push(context,
-                        //                  MaterialPageRoute(
-                        //                      builder: (context) =>
-                        //                          ReviewScreen(product: state
-                        //                              .products[index])));
-                        //            },
-                        //            product: state.products[index],
-                        //            id: state.products[index].id,
-                        //          );
-                        //        }
-                        //   });
+
                       } else {
                         return const Center(
                           child: Text('No Response'),

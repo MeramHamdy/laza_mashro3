@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
               create: (context) => AddReviewCubit(),
             )
           ],
-          child: LoginPage(),
+          child: SplashScreen(),
         ),
       );
     });

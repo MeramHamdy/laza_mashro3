@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:laza_mashro3/screens/category_items.dart';
+import 'package:laza_mashro3/screens/log_in_screen.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
@@ -44,9 +46,9 @@ class DrawerScreen extends StatelessWidget {
                 child: Icon(Icons.person),
               ),
               title: Text(
-                "UserName",
+                "Mera Hamdy ",
               ),
-              subtitle: Text("mera@gmail.com"),
+              subtitle: Text("merahamdy11@gmail.com"),
             ),
             const SizedBox(
               height: 20,
@@ -78,7 +80,7 @@ class DrawerScreen extends StatelessWidget {
             Roow(
               icoon: Icons.card_giftcard,
               txt: "Order",
-              widgetName: AboutApp(),
+              widgetName: CartScreen(),
             ),
             Roow(
               icoon: Icons.privacy_tip_outlined,
@@ -93,7 +95,7 @@ class DrawerScreen extends StatelessWidget {
             Roow(
               icoon: Icons.logout,
               txt: "Logout",
-              widgetName: AddressScreen(),
+              widgetName: LoginPage(),
             ),
             const SizedBox(
               height: 50,

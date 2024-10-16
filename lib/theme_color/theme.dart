@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 
 ThemeData lightMode = ThemeData(
+    primaryColor: mainColor,
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(
       primary: black,
@@ -14,6 +15,7 @@ ThemeData lightMode = ThemeData(
     ));
 
 ThemeData darkMode = ThemeData(
+     primaryColor: bgdark,
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark(
         primary: white, secondary: lightDark, tertiary: bgdark),

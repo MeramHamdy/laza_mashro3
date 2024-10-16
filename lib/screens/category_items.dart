@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/models/product.dart';
-import 'package:laza_mashro3/models/product_model.dart';
+import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:laza_mashro3/screens/product_screen.dart';
 import 'package:laza_mashro3/services/product_service.dart';
 import 'package:laza_mashro3/widgets/category_widget.dart';
@@ -64,7 +64,11 @@ class _CategoryItemsState extends State<CategoryItems> {
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return CartScreen();
+                  }));
+                },
                 icon: CircleAvatar(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   child: Icon(

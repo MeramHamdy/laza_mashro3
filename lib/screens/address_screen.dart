@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/screens/confirm_order.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
@@ -85,6 +86,7 @@ class AddressScreen extends StatelessWidget {
             color: mainColor,
             child: GestureDetector(
               onTap: () {
+                cartProduct.clear();
                 Navigator.push(
                     context,
                     MaterialPageRoute(

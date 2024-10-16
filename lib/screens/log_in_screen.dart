@@ -4,6 +4,7 @@ import 'package:laza_mashro3/models/authentication_model.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/screens/sign_up_screen.dart';
 import 'package:laza_mashro3/services/log_in_service.dart';
+import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/widgets/custom_text_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,168 +26,170 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        backgroundColor: transparent,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(40),
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Welcome Text
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      "Welcome",
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Padding(
+            padding: const EdgeInsets.all(40),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Welcome Text
+                  Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          "Welcome",
+                          style:
+                              TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Please enter your data to continue",
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Please enter your data to continue",
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 80),
-              // Username TextField
-              TextField(
-                controller: gmail,
-                decoration: InputDecoration(
-                  labelText: 'email',
-                  // suffixIcon: Icon(Icons.check, color: Colors.green),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ),
-              SizedBox(height: 20),
-              // Password TextField
-              TextField(
-                controller: pass,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  // suffixIcon: Row(
-                  //   mainAxisSize: MainAxisSize.min,
+                  SizedBox(height: 80),
+                  // Username TextField
+                  TextField(
+                    controller: gmail,
+                    decoration: InputDecoration(
+                      labelText: 'email',
+                      // suffixIcon: Icon(Icons.check, color: Colors.green),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Password TextField
+                  TextField(
+                    controller: pass,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      // suffixIcon: Row(
+                      //   mainAxisSize: MainAxisSize.min,
+                      //   children: [
+                      //     Text(
+                      //       'Strong',
+                      //       style: TextStyle(color: Colors.green),
+                      //     ),
+                      //     Icon(Icons.check, color: Colors.green),
+                      //   ],
+                      // ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Forgot password
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle forgot password
+                      },
+                      child: Text(
+                        'Forgot password?',
+                        style:
+                            TextStyle(color:   mainColor,
+                      ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 220,),
+                  CustomText(
+                    firstText: 'Don\'t have an account?',
+                    secondText: 'Sign Up',
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return SignUpPage();
+                      }));
+                    },
+                  ),
+                  // SizedBox(height: 20),
+                  // // Remember me switch
+                  // Row(
                   //   children: [
-                  //     Text(
-                  //       'Strong',
-                  //       style: TextStyle(color: Colors.green),
+                  //     Text('Remember me'),
+                  //     Spacer(),
+                  //     Switch(
+                  //       value: true,
+                  //       onChanged: (value) {},
+                  //       activeColor: Colors.green,
                   //     ),
-                  //     Icon(Icons.check, color: Colors.green),
                   //   ],
                   // ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              // Forgot password
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    // Handle forgot password
-                  },
-                  child: Text(
-                    'Forgot password?',
-                    style:
-                        TextStyle(color: const Color.fromARGB(200, 8, 75, 129)),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              CustomText(
-                firstText: 'Don\'t have an account?',
-                secondText: 'Sign Up',
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SignUpPage();
-                  }));
-                },
-              ),
-              // SizedBox(height: 20),
-              // // Remember me switch
-              // Row(
-              //   children: [
-              //     Text('Remember me'),
-              //     Spacer(),
-              //     Switch(
-              //       value: true,
-              //       onChanged: (value) {},
-              //       activeColor: Colors.green,
-              //     ),
-              //   ],
-              // ),
 
-              // Terms and conditions
-              // Center(
-              //   child: Text(
-              //     'By connecting your account confirm that you agree\nwith our Terms and Conditions',
-              //     textAlign: TextAlign.center,
-              //     style: TextStyle(fontSize: 12, color: Colors.grey),
-              //   ),
-              // ),
-              Spacer(),
-              // Login Button
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  // primary: Colors.purple,
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 70),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () async {
-                  // future delete
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return BottomNavBar();
-                  }));
-                  if (formKey.currentState!.validate()) {
-                    try {
-                      isLoading = true;
-                      setState(() {
-                        isLoading = false;
-                      });
-                      AuthenticationModel model = await LogInService().LogIn(
-                        email: gmail.text,
-                        password: pass.text,
-                      );
-                      isLoading = false;
-                      setState(() {});
-                      print(model.status);
-                      print(model.message);
-                      if (model.status == 'success') {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return BottomNavBar();
-                        }));
-                      } else if (model.status == 'failure') {
-                        showSnackBar(context, model.message);
-                      }
-                    } catch (e) {
-                      print(e.toString());
-                    }
-                  }
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(fontSize: 18),
-                ),
+                  // Terms and conditions
+                  // Center(
+                  //   child: Text(
+                  //     'By connecting your account confirm that you agree\nwith our Terms and Conditions',
+                  //     textAlign: TextAlign.center,
+                  //     style: TextStyle(fontSize: 12, color: Colors.grey),
+                  //   ),
+                  // ),
+                  // Login Button
+
+                ],
               ),
-            ],
+            ),
           ),
         ),
-      ),
-    );
+    bottomNavigationBar: Container(
+    width: double.infinity,
+    height: 75,
+    padding: const EdgeInsets.only(top: 10),
+    color: mainColor,
+    child: GestureDetector(
+    onTap: () async  {
+            // future delete
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return BottomNavBar();
+            }));
+            if (formKey.currentState!.validate()) {
+              try {
+                isLoading = true;
+                setState(() {
+                  isLoading = false;
+                });
+                AuthenticationModel model = await LogInService().LogIn(
+                  email: gmail.text,
+                  password: pass.text,
+                );
+                isLoading = false;
+                setState(() {});
+                print(model.status);
+                print(model.message);
+                if (model.status == 'success') {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return BottomNavBar();
+                      }));
+                } else if (model.status == 'failure') {
+                  showSnackBar(context, model.message);
+                }
+              } catch (e) {
+                print(e.toString());
+              }
+            }
+          },
+          child: Text(
+            'Login',
+              textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 18),
+          ),
+        )
+    )  );
   }
 }

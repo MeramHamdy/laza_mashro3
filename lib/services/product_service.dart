@@ -1,6 +1,5 @@
 import 'package:laza_mashro3/helper/api.dart';
 import 'package:laza_mashro3/models/product.dart';
-import 'package:laza_mashro3/models/product_model.dart';
 
 class ProductService {
   Future<Product> productInfo({

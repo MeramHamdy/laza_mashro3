@@ -16,17 +16,17 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.pushReplacement(
+            () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: ((context) => LoginPage()))));
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: bgscreen1,
-      body: Center(
-        child: Text('laza'),
-      ),
-    );
-  }
+    return  Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
+        body: Center(
+            child: Image.asset('assets/Logo.png',color: white,),
+            ),
+        );
+    }
 }

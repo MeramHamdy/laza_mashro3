@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../theme_color/Colors.dart';
@@ -21,7 +22,7 @@ class BottomNavBar extends StatelessWidget {
         if (state.navbarItem == NavbarItem.home) {
           return const HomeScreen();
         } else if (state.navbarItem == NavbarItem.cart) {
-          return AddressScreen();
+          return CartScreen();
         }
         return Container();
      });}),
@@ -56,8 +57,10 @@ class BottomNavBar extends StatelessWidget {
                 BlocProvider.of<NavBarCubit>(context)
                     .getNavBarItem(NavbarItem.home);
               } else if (index == 1) {
-                BlocProvider.of<NavBarCubit>(context)
-                    .getNavBarItem(NavbarItem.cart);
+                context.read<NavBarCubit>().getNavBarItem(NavbarItem.cart);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>CartScreen()));
               }
             });  },
           );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
@@ -15,7 +16,7 @@ class ConfirmOrder extends StatelessWidget {
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const HomeScreen()));
+                    builder: (BuildContext context) =>  BottomNavBar()));
               },
               icon: CircleAvatar(
                 backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -55,7 +56,7 @@ class ConfirmOrder extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const HomeScreen()));
+                    builder: (BuildContext context) =>  CartScreen()));
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,

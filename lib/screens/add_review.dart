@@ -114,12 +114,16 @@ class _AddReviewState extends State<AddReview> {
                 activeColor: mainColor,
                 inactiveColor: greyLight,
               ),
+              SizedBox(height: 260,),
               Provider<AddReviewCubit>(
                 create: (_) => AddReviewCubit(),
                 builder: (context, child) {
                   return BlocBuilder<AddReviewCubit, List<Reviews>>(
                       builder: (context, review) {
                     return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: mainColor,
+                            shape: const RoundedRectangleBorder()),
                         onPressed: () {
                           final newReview = Reviews(
                             reviewerName: controllerName.text,
@@ -131,12 +135,9 @@ class _AddReviewState extends State<AddReview> {
                           // Pass the new review back to the previous screen
                           Navigator.pop(context, newReview);
                         },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: mainColor,
-                            shape: const RoundedRectangleBorder()),
                         child: const Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 111, vertical: 20),
+                              horizontal: 111, vertical: 30),
                           child: Text(
                             'Submit Review',
                             style: TextStyle(color: white),

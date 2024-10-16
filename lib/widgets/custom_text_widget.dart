@@ -12,17 +12,17 @@ class CustomText extends StatelessWidget {
       children: [
         Text(
           '$firstText',
-          style: const TextStyle(
-            color: Colors.black87,
-            fontSize: 17,
+          style:  TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+      fontSize: 17,
           ),
         ),
         GestureDetector(
           onTap: onTap,
           child: Text(
             '   $secondText',
-            style: const TextStyle(
-              color: Colors.black,
+            style:  TextStyle(
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 19,
               fontWeight: FontWeight.bold,
             ),

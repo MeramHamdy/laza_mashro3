@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/widgets/cart_item.dart';
 import 'package:laza_mashro3/widgets/order_info.dart';
 
@@ -25,7 +26,9 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     return Scaffold(
+      backgroundColor:  Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
+        backgroundColor: transparent,
         centerTitle: true,
         title: Text(
           'Cart',
@@ -34,91 +37,100 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              child: Icon(
+                Icons.arrow_back_outlined,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            )),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 200,
-              child: Expanded(
-                child: ListView.builder(
-                  itemCount: cartProduct.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        // Use the CartItem widget to display product details
-                        Expanded(
-                          child: CartItem(
-                            imageUrl: cartProduct[index].images[0],
-                            productName: cartProduct[index].title,
-                            price: r'$ ' + cartProduct[index].price.toString(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 200,
+                child: Expanded(
+                  child: ListView.builder(
+                    itemCount: cartProduct.length,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          // Use the CartItem widget to display product details
+                          Expanded(
+                            child: CartItem(
+                              imageUrl: cartProduct[index].images[0],
+                              productName: cartProduct[index].title,
+                              price: r'$ ' + cartProduct[index].price.toString(),
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.delete,
+                          IconButton(
+                            icon: Icon(
+                              Icons.delete,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                // Remove the product from the cart
+                                cartProduct.removeAt(index);
+                              });
+                            },
                           ),
-                          onPressed: () {
-                            setState(() {
-                              // Remove the product from the cart
-                              cartProduct.removeAt(index);
-                            });
-                          },
-                        ),
-                      ],
-                    );
-                  },
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            Divider(),
-            Spacer(),
-            Text(
-              "Order Info",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              Divider(),
+              SizedBox(height: 20,),
+              Text(
+                "Order Info",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  OrderInfoRow(
-                    label: 'Shipping cost',
-                    value: r'$ ' + shippingCost.toString(),
-                  ),
-                  OrderInfoRow(
-                    label: 'Total',
-                    value: r'$ ' + totalPrice.toString(),
-                    isBold: true,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    OrderInfoRow(
+                      label: 'Shipping cost',
+                      value: r'$ ' + shippingCost.toString(),
+                    ),
+                    OrderInfoRow(
+                      label: 'Total',
+                      value: r'$ ' + totalPrice.toString(),
+                      isBold: true,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return AddressScreen();
-                }));
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-              ),
-              child: Text('Checkout'),
-            ),
-          ],
+
+            ],
+          ),
         ),
       ),
-    );
+        bottomNavigationBar: Container(
+        width: double.infinity,
+        height: 75,
+        padding: const EdgeInsets.only(top: 10),
+        color: mainColor,
+        child: GestureDetector(
+        onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return AddressScreen();
+        }));
+        },
+        child: Text(textAlign: TextAlign.center,'Checkout'),
+    ),
+        ) );
   }
 }
