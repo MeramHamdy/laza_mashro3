@@ -21,8 +21,8 @@ class DrawerScreen extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const SizedBox(
               height: 30,
             ),
             CircleAvatar(
@@ -36,10 +36,10 @@ class DrawerScreen extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            ListTile(
+            const ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
               ),
@@ -48,23 +48,23 @@ class DrawerScreen extends StatelessWidget {
               ),
               subtitle: Text("mera@gmail.com"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.light_mode_outlined,
                   color: mainColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   themeProvider.isDarkMode ? 'Light Mode' : 'Dark Mode',
-                  style: TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 15),
                 ),
-                Spacer(),
+                const Spacer(),
                 Switch(
                   value: themeProvider.isDarkMode,
                   onChanged: (value) {
@@ -83,7 +83,7 @@ class DrawerScreen extends StatelessWidget {
             Roow(
               icoon: Icons.privacy_tip_outlined,
               txt: "Privacy & Policy",
-              widgetName: PrivacyPolicy(),
+              widgetName: const PrivacyPolicy(),
             ),
             Roow(
               icoon: Icons.info_outline,
@@ -95,7 +95,7 @@ class DrawerScreen extends StatelessWidget {
               txt: "Logout",
               widgetName: AddressScreen(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
           ]),
@@ -108,7 +108,11 @@ class Roow extends StatelessWidget {
   final String txt;
   final Widget widgetName;
 
-  Roow({required this.icoon, required this.txt, required this.widgetName});
+  const Roow(
+      {super.key,
+      required this.icoon,
+      required this.txt,
+      required this.widgetName});
 
   @override
   Widget build(BuildContext context) {
@@ -125,12 +129,12 @@ class Roow extends StatelessWidget {
               icoon,
               color: mainColor,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text(
               txt,
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
           ],
         ),

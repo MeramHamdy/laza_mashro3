@@ -65,7 +65,7 @@ class _AddReviewState extends State<AddReview> {
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.secondary,
                     hintText: 'Type your name',
-                    hintStyle: TextStyle(color: greyDark),
+                    hintStyle: const TextStyle(color: greyDark),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none)),

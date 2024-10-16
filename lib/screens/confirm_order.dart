@@ -15,14 +15,14 @@ class ConfirmOrder extends StatelessWidget {
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => HomeScreen()));
+                    builder: (BuildContext context) => const HomeScreen()));
               },
               icon: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 child: Icon(
                   Icons.arrow_back_outlined,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.secondary,
               )),
         ),
         body: Column(
@@ -46,28 +46,28 @@ class ConfirmOrder extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 28),
             ),
-            Text(
+            const Text(
               'Your order has been confirmed, we will send you confirmation email shortly.',
               style: TextStyle(color: greyDark, fontSize: 15),
               textAlign: TextAlign.center,
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => HomeScreen()));
+                    builder: (BuildContext context) => const HomeScreen()));
               },
-              child: Text(
-                'Go to Orders',
-                style: TextStyle(color: greyDark, fontSize: 17),
-              ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
-                  minimumSize: Size(335, 50)),
+                  minimumSize: const Size(335, 50)),
+              child: Text(
+                'Go to Orders',
+                style: TextStyle(color: greyDark, fontSize: 17),
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             )
           ],
@@ -75,14 +75,16 @@ class ConfirmOrder extends StatelessWidget {
         bottomNavigationBar: Container(
             width: double.infinity,
             height: 75,
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             color: mainColor,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BottomNavBar()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BottomNavBar()));
               },
-              child: Text(
+              child: const Text(
                 textAlign: TextAlign.center,
                 "Continue Shopping",
                 style: TextStyle(

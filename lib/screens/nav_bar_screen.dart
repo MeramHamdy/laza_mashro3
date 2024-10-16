@@ -14,7 +14,7 @@ class BottomNavBar extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<NavBarCubit, NavBarState>(builder: (context, state) {
         if (state.navbarItem == NavbarItem.home) {
-          return HomeScreen();
+          return const HomeScreen();
         } else if (state.navbarItem == NavbarItem.cart) {
           return AddressScreen();
         }

@@ -25,13 +25,13 @@ class AboutPrivacy extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
             color: greyLight,
           ),
         ),
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
                 mainColor,
                 bgscreen1,
@@ -58,7 +58,7 @@ class AboutPrivacy extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: txt1,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: mainColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),

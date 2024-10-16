@@ -7,10 +7,10 @@ class Reviews {
 
   Reviews(
       {this.rating,
-        this.comment,
-        this.date,
-        this.reviewerName,
-        this.reviewerEmail});
+      this.comment,
+      this.date,
+      this.reviewerName,
+      this.reviewerEmail});
 
   Reviews.fromJson(Map<String, dynamic> json) {
     rating = json['rating'];
@@ -21,12 +21,12 @@ class Reviews {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['rating'] = this.rating;
-    data['comment'] = this.comment;
-    data['date'] = this.date;
-    data['reviewerName'] = this.reviewerName;
-    data['reviewerEmail'] = this.reviewerEmail;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['rating'] = rating;
+    data['comment'] = comment;
+    data['date'] = date;
+    data['reviewerName'] = reviewerName;
+    data['reviewerEmail'] = reviewerEmail;
     return data;
   }
 }

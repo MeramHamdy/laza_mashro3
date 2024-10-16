@@ -3,19 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/models/product.dart';
+import 'package:laza_mashro3/models/product_model.dart';
+import 'package:laza_mashro3/screens/product_screen.dart';
+import 'package:laza_mashro3/services/product_service.dart';
 import 'package:laza_mashro3/widgets/category_widget.dart';
 import 'package:provider/provider.dart';
 import '../theme_color/Colors.dart';
 
-class CategoryItems extends StatelessWidget {
+class CategoryItems extends StatefulWidget {
   final String category;
 
   const CategoryItems({super.key, required this.category});
 
   @override
+  State<CategoryItems> createState() => _CategoryItemsState();
+}
+
+class _CategoryItemsState extends State<CategoryItems> {
+  @override
   Widget build(BuildContext context) {
     String appBarTitle;
-    switch (category.toLowerCase()) {
+    switch (widget.category.toLowerCase()) {
       case 'beauty':
         appBarTitle = 'Beauty';
         break;
@@ -40,11 +48,11 @@ class CategoryItems extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               icon: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 child: Icon(
                   Icons.arrow_back_outlined,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.secondary,
               )),
           title: Text(
             appBarTitle,
@@ -58,11 +66,11 @@ class CategoryItems extends StatelessWidget {
             IconButton(
                 onPressed: () {},
                 icon: CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   child: Icon(
                     Icons.shopping_bag_outlined,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
                 )),
           ],
         ),
@@ -72,7 +80,7 @@ class CategoryItems extends StatelessWidget {
               return BlocBuilder<ProductCubit, ProductState>(
                   builder: (context, state) {
                 if (state is ProductLoading) {
-                  return Center(
+                  return const Center(
                       child: CircularProgressIndicator(
                     color: mainColor,
                   ));
@@ -81,14 +89,14 @@ class CategoryItems extends StatelessWidget {
                 } else if (state is ProductLoaded) {
                   // Filter products based on the category
                   List<Product> filteredProducts;
-                  if (category.toLowerCase() == 'beauty' ||
-                      category.toLowerCase() == 'fragrances' ||
-                      category.toLowerCase() == 'furniture' ||
-                      category.toLowerCase() == 'groceries') {
+                  if (widget.category.toLowerCase() == 'beauty' ||
+                      widget.category.toLowerCase() == 'fragrances' ||
+                      widget.category.toLowerCase() == 'furniture' ||
+                      widget.category.toLowerCase() == 'groceries') {
                     filteredProducts = state.products
                         .where((product) =>
                             product.category.toLowerCase() ==
-                            category.toLowerCase())
+                            widget.category.toLowerCase())
                         .toList();
                   } else {
                     // If category doesn't match specific ones, show all products
@@ -101,12 +109,12 @@ class CategoryItems extends StatelessWidget {
                         children: [
                           Text(
                             '${filteredProducts.length} Products',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                             ),
                           ),
-                          Text(
+                          const Text(
                             'Available in stock',
                             style: TextStyle(color: greyDark, fontSize: 15),
                           ),
@@ -115,17 +123,36 @@ class CategoryItems extends StatelessWidget {
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 10.0,
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   children: List.generate(
                                       filteredProducts.length, (index) {
                                     final product = filteredProducts[index];
                                     return CategrayWidget(
-                                        product: product, onTap: () {});
+                                        product: product,
+                                        onTap: () async {
+                                          try {
+                                            setState(() {});
+                                            Product model =
+                                                await ProductService()
+                                                    .productInfo(
+                                                        productId: product.id);
+                                            setState(() {});
+                                            print(model.title);
+                                            print(model.id);
+                                            Navigator.push(context,
+                                                MaterialPageRoute(
+                                                    builder: (context) {
+                                              return ProductPage(model);
+                                            }));
+                                          } catch (e) {
+                                            print(e.toString());
+                                          }
+                                        });
                                   })))
                         ]),
                   );
                 } else {
-                  return Center(child: Text('No Products Found'));
+                  return const Center(child: Text('No Products Found'));
                 }
               });
             }));

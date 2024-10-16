@@ -35,7 +35,7 @@ class AboutApp extends StatelessWidget {
         addTeam: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Team",
+            const Text("Team",
                 style: TextStyle(
                     color: mainColor,
                     fontSize: 20,
@@ -49,7 +49,7 @@ class AboutApp extends StatelessWidget {
                 3,
                 (index) {
                   return Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: bgscreen1,
                     ),
                     child: Column(
@@ -60,11 +60,11 @@ class AboutApp extends StatelessWidget {
                           width: double.infinity,
                           height: 120,
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         //!  to It cannot be empty // if empty show red screen &exception
                         Text(
                           data[index]["name"]!,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(data[index]["job"]!),
                       ],
@@ -73,10 +73,10 @@ class AboutApp extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Thank you for choosing Laza',
               style: TextStyle(
                   color: mainColor,

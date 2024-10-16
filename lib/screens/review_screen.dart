@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_mashro3/cubits/add_review.dart';
 import 'package:laza_mashro3/widgets/review_widget.dart';
 import 'package:laza_mashro3/widgets/reviews.dart';
 import 'package:laza_mashro3/widgets/star_rating_widget.dart';
-import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../theme_color/Colors.dart';
 import 'add_review.dart';

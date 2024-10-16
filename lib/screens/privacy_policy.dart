@@ -6,7 +6,7 @@ class PrivacyPolicy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AboutPrivacy(
+    return const AboutPrivacy(
       screenName: 'Privacy Policy',
       txt1: 'Privacy Policy for Laza\n\n',
       txt2: '''*Data Collection* 

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:laza_mashro3/models/product.dart';
-import 'package:laza_mashro3/screens/add_review.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 
 class StarRatingWidget extends StatelessWidget {
@@ -14,11 +12,26 @@ class StarRatingWidget extends StatelessWidget {
       case (0):
         return const Row(
           children: [
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
           ],
         );
 
@@ -26,14 +39,26 @@ class StarRatingWidget extends StatelessWidget {
         return const Row(
           children: [
             Icon(
-            size: 14,
+              size: 14,
               Icons.star_rate_rounded,
               color: star,
             ),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
           ],
         );
 
@@ -42,15 +67,26 @@ class StarRatingWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.star_rate_rounded,
-              color: star,size: 14,
+              color: star,
+              size: 14,
             ),
             Icon(
               Icons.star_rate_rounded,
-              color: star,size: 14,
+              color: star,
+              size: 14,
             ),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
           ],
         );
         break;
@@ -67,12 +103,19 @@ class StarRatingWidget extends StatelessWidget {
               Icons.star_rate_rounded,
               color: star,
             ),
-            Icon(size: 14,
+            Icon(
+              size: 14,
               Icons.star_rate_rounded,
               color: star,
             ),
-            Icon(Icons.star_border_rounded,size: 14,),
-            Icon(Icons.star_border_rounded,size: 14,),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
           ],
         );
 
@@ -81,10 +124,6 @@ class StarRatingWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.star_rate_rounded,
-              color: star,size: 14,
-            ),
-            Icon(
-              Icons.star_rate_rounded,
               color: star,
               size: 14,
             ),
@@ -98,7 +137,15 @@ class StarRatingWidget extends StatelessWidget {
               color: star,
               size: 14,
             ),
-            Icon(Icons.star_border_rounded,size: 14,),
+            Icon(
+              Icons.star_rate_rounded,
+              color: star,
+              size: 14,
+            ),
+            Icon(
+              Icons.star_border_rounded,
+              size: 14,
+            ),
           ],
         );
 
@@ -106,7 +153,6 @@ class StarRatingWidget extends StatelessWidget {
         return const Row(
           children: [
             Icon(
-
               Icons.star_rate_rounded,
               color: star,
               size: 14,
@@ -120,7 +166,6 @@ class StarRatingWidget extends StatelessWidget {
               Icons.star_rate_rounded,
               color: star,
               size: 14,
-
             ),
             Icon(
               size: 14,

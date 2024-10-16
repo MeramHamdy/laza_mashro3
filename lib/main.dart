@@ -9,7 +9,9 @@ import 'package:laza_mashro3/drawer_screen.dart';
 import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
+import 'package:laza_mashro3/screens/log_in_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
+import 'package:laza_mashro3/screens/splash_screen.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/widgets/category_widget.dart';
@@ -20,7 +22,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemesProvider(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
               create: (context) => AddReviewCubit(),
             )
           ],
-          child: BottomNavBar(),
+          child: LoginPage(),
         ),
       );
     });

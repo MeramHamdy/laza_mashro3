@@ -25,14 +25,14 @@ class AddressScreen extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               icon: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 child: Icon(
                   Icons.arrow_back_outlined,
                   color: Theme.of(context).iconTheme.color,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.secondary,
               )),
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Address',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
           ),
@@ -55,7 +55,7 @@ class AddressScreen extends StatelessWidget {
                       hint: 'Egypt',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -81,14 +81,16 @@ class AddressScreen extends StatelessWidget {
         bottomNavigationBar: Container(
             width: double.infinity,
             height: 75,
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             color: mainColor,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ConfirmOrder()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ConfirmOrder()));
               },
-              child: Text(
+              child: const Text(
                 textAlign: TextAlign.center,
                 "Save Address",
                 style: TextStyle(
@@ -118,7 +120,7 @@ class TextField extends StatelessWidget {
         children: [
           Text(
             txt,
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
           ),
           TextFormField(
               controller: controller,
@@ -126,7 +128,7 @@ class TextField extends StatelessWidget {
                 fillColor: Theme.of(context).colorScheme.secondary,
                 filled: true,
                 hintText: hint,
-                hintStyle: TextStyle(color: greyDark),
+                hintStyle: const TextStyle(color: greyDark),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Theme.of(context).colorScheme.secondary,

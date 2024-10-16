@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             width: 45,
             height: 45,
-
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(20)),
@@ -57,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         }),
       ),
-      drawer: Drawer(
+      drawer: const Drawer(
         child: DrawerScreen(),
       ),
       body: SingleChildScrollView(
@@ -101,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 15,
               ),
-               Text(
+              const Text(
                 'Choose category',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
@@ -110,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: BlocBuilder<ProductCubit, ProductState>(
                     builder: (context, state) {
                   if (state is ProductLoading) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(
                         color: Color(0xFFE23E3E),
                       ),
@@ -122,15 +121,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else if (state is ProductLoaded) {
                     List<Product> filteredProducts;
                     if (searchQuery.isNotEmpty) {
-                      filteredProducts = state.products.where((product) =>
-                          product.title.toLowerCase().contains(searchQuery.toLowerCase())).toList();
-                      return Container(
+                      filteredProducts = state.products
+                          .where((product) => product.title
+                              .toLowerCase()
+                              .contains(searchQuery.toLowerCase()))
+                          .toList();
+                      return SizedBox(
                         height: MediaQuery.of(context).size.height,
                         child: GridView.count(
                             crossAxisCount: 2,
                             crossAxisSpacing: 10.0,
                             mainAxisSpacing: 10.0,
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             children:
                                 List.generate(filteredProducts.length, (index) {
                               final product = filteredProducts[index];
@@ -139,10 +141,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             })),
                       );
                     } else {
-
                       return GridView(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
                         children: [
                           CategoryCard(
                             onTap: () {
@@ -175,9 +177,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>          ReviewScreen(product: state
-                                          .products[2])
-                                  ));
+                                      builder: (context) => ReviewScreen(
+                                          product: state.products[2])));
                             },
                             product: state.products[11],
                             id: state.products[11].id,
@@ -217,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //        }
                     //   });
                   } else {
-                    return Center(
+                    return const Center(
                       child: Text('No Response'),
                     );
                   }

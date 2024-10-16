@@ -3,21 +3,21 @@ import 'package:laza_mashro3/theme_color/Colors.dart';
 
 ThemeData lightMode = ThemeData(
     brightness: Brightness.light,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: black,
       secondary: greyLight,
       tertiary: white,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(color: black),
       titleTextStyle: TextStyle(color: black),
     ));
 
 ThemeData darkMode = ThemeData(
     brightness: Brightness.dark,
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
         primary: white, secondary: lightDark, tertiary: bgdark),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(color: white),
       titleTextStyle: TextStyle(color: white),
     ));
