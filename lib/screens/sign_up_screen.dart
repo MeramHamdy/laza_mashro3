@@ -138,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: GestureDetector(
             onTap: () async {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return BottomNavBar();
+                return LoginPage();
               }));
               if (formKey.currentState!.validate()) {
                 // showSnackBar(context, 'Failed to connect with api');

@@ -56,35 +56,33 @@ class _CartScreenState extends State<CartScreen> {
             children: [
               SizedBox(
                 height: 200,
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: cartProduct.length,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          // Use the CartItem widget to display product details
-                          Expanded(
-                            child: CartItem(
-                              imageUrl: cartProduct[index].images[0],
-                              productName: cartProduct[index].title,
-                              price: r'$ ' + cartProduct[index].price.toString(),
-                            ),
+                child: ListView.builder(
+                  itemCount: cartProduct.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        // Use the CartItem widget to display product details
+                        Expanded(
+                          child: CartItem(
+                            imageUrl: cartProduct[index].images[0],
+                            productName: cartProduct[index].title,
+                            price: r'$ ' + cartProduct[index].price.toString(),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                // Remove the product from the cart
-                                cartProduct.removeAt(index);
-                              });
-                            },
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.delete,
                           ),
-                        ],
-                      );
-                    },
-                  ),
+                          onPressed: () {
+                            setState(() {
+                              // Remove the product from the cart
+                              cartProduct.removeAt(index);
+                            });
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
               Divider(),
