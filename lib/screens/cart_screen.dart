@@ -5,8 +5,6 @@ import 'package:laza_mashro3/widgets/cart_item.dart';
 import 'package:laza_mashro3/widgets/order_info.dart';
 
 class CartScreen extends StatefulWidget {
-  static String id = 'CartScreenId';
-
   @override
   _CartScreenState createState() => _CartScreenState();
 }
