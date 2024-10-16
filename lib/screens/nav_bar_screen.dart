@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_mashro3/cubits/navbar_cuibt.dart';
+import 'package:laza_mashro3/cubits/product_cuibt.dart';
 import 'package:laza_mashro3/screens/address_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../theme_color/Colors.dart';
 import 'home_screen.dart';
@@ -12,15 +14,21 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<NavBarCubit, NavBarState>(builder: (context, state) {
+      body:Provider<NavBarCubit>(
+        create: (_) => NavBarCubit(),
+    builder: (context, child) {
+    return BlocBuilder<NavBarCubit, NavBarState>(builder: (context, state) {
         if (state.navbarItem == NavbarItem.home) {
           return const HomeScreen();
         } else if (state.navbarItem == NavbarItem.cart) {
           return AddressScreen();
         }
         return Container();
-      }),
-      bottomNavigationBar: BlocBuilder<NavBarCubit, NavBarState>(
+     });}),
+      bottomNavigationBar:Provider<NavBarCubit>(
+        create: (_) => NavBarCubit(),
+    builder: (context, child) {
+    return BlocBuilder<NavBarCubit, NavBarState>(
         builder: (context, state) {
           return BottomNavigationBar(
             backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -51,10 +59,10 @@ class BottomNavBar extends StatelessWidget {
                 BlocProvider.of<NavBarCubit>(context)
                     .getNavBarItem(NavbarItem.cart);
               }
-            },
+            });  },
           );
         },
-      ),
+    ),
     );
   }
 }

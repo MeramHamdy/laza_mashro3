@@ -9,6 +9,7 @@ import 'package:laza_mashro3/screens/review_screen.dart';
 
 import 'package:laza_mashro3/widgets/category_card.dart';
 import 'package:laza_mashro3/widgets/category_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../theme_color/Colors.dart';
 //home
@@ -106,123 +107,136 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 500,
-                child: BlocBuilder<ProductCubit, ProductState>(
+                child: Provider<ProductCubit>(
+    create: (_) => ProductCubit(),
+    builder: (context, child) {
+    return BlocBuilder<ProductCubit, ProductState>(
                     builder: (context, state) {
-                  if (state is ProductLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xFFE23E3E),
-                      ),
-                    );
-                  } else if (state is ProductError) {
-                    return Center(
-                      child: Text(state.message),
-                    );
-                  } else if (state is ProductLoaded) {
-                    List<Product> filteredProducts;
-                    if (searchQuery.isNotEmpty) {
-                      filteredProducts = state.products
-                          .where((product) => product.title
-                              .toLowerCase()
-                              .contains(searchQuery.toLowerCase()))
-                          .toList();
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        child: GridView.count(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 10.0,
-                            padding: const EdgeInsets.all(5),
-                            children:
+                      if (state is ProductLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFFE23E3E),
+                          ),
+                        );
+                      } else if (state is ProductError) {
+                        return Center(
+                          child: Text(state.message),
+                        );
+                      } else if (state is ProductLoaded) {
+                        List<Product> filteredProducts;
+                        if (searchQuery.isNotEmpty) {
+                          filteredProducts = state.products
+                              .where((product) =>
+                              product.title
+                                  .toLowerCase()
+                                  .contains(searchQuery.toLowerCase()))
+                              .toList();
+                          return SizedBox(
+                            height: MediaQuery
+                                .of(context)
+                                .size
+                                .height,
+                            child: GridView.count(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10.0,
+                                mainAxisSpacing: 10.0,
+                                padding: const EdgeInsets.all(5),
+                                children:
                                 List.generate(filteredProducts.length, (index) {
-                              final product = filteredProducts[index];
-                              return CategrayWidget(
-                                  product: product, onTap: () {});
-                            })),
-                      );
-                    } else {
-                      return GridView(
-                        gridDelegate:
+                                  final product = filteredProducts[index];
+                                  return CategrayWidget(
+                                      product: product, onTap: () {});
+                                })),
+                          );
+                        } else {
+                          return GridView(
+                            gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2),
-                        children: [
-                          CategoryCard(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CategoryItems(
-                                          category: state.products[0].category)
-                                      // ReviewScreen(product: state
-                                      //     .products[0])
+                            children: [
+                              CategoryCard(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CategoryItems(
+                                                  category: state.products[0]
+                                                      .category)
+                                        // ReviewScreen(product: state
+                                        //     .products[0])
                                       ));
-                            },
-                            product: state.products[0],
-                            id: state.products[0].id,
-                          ),
-                          CategoryCard(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CategoryItems(
-                                          category:
-                                              state.products[5].category)));
-                            },
-                            product: state.products[5],
-                            id: state.products[5].id,
-                          ),
-                          CategoryCard(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ReviewScreen(
-                                          product: state.products[2])));
-                            },
-                            product: state.products[11],
-                            id: state.products[11].id,
-                          ),
-                          CategoryCard(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CategoryItems(
-                                          category:
-                                              state.products[19].category)));
-                            },
-                            product: state.products[19],
-                            id: state.products[19].id,
-                          )
-                        ],
-                      );
-                    }
-                    // GridView.builder(
-                    //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    //       crossAxisCount: 2),
-                    //   itemCount: state.products.length,
-                    //   itemBuilder: (context, index) {
-                    //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
-                    //          return CategoryCard(
-                    //            onTap: () {
-                    //              Navigator.push(context,
-                    //                  MaterialPageRoute(
-                    //                      builder: (context) =>
-                    //                          ReviewScreen(product: state
-                    //                              .products[index])));
-                    //            },
-                    //            product: state.products[index],
-                    //            id: state.products[index].id,
-                    //          );
-                    //        }
-                    //   });
-                  } else {
-                    return const Center(
-                      child: Text('No Response'),
-                    );
-                  }
-                }),
+                                },
+                                product: state.products[0],
+                                id: state.products[0].id,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CategoryItems(
+                                                  category:
+                                                  state.products[5].category)));
+                                },
+                                product: state.products[5],
+                                id: state.products[5].id,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReviewScreen(
+                                                  product: state.products[2])));
+                                },
+                                product: state.products[11],
+                                id: state.products[11].id,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CategoryItems(
+                                                  category:
+                                                  state.products[19]
+                                                      .category)));
+                                },
+                                product: state.products[19],
+                                id: state.products[19].id,
+                              )
+                            ],
+                          );
+                        }
+                        // GridView.builder(
+                        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        //       crossAxisCount: 2),
+                        //   itemCount: state.products.length,
+                        //   itemBuilder: (context, index) {
+                        //        if (state.products[index].id == 1 || state.products[index].id == 6|| state.products[index].id==11 || state.products[index].id ==20) {
+                        //          return CategoryCard(
+                        //            onTap: () {
+                        //              Navigator.push(context,
+                        //                  MaterialPageRoute(
+                        //                      builder: (context) =>
+                        //                          ReviewScreen(product: state
+                        //                              .products[index])));
+                        //            },
+                        //            product: state.products[index],
+                        //            id: state.products[index].id,
+                        //          );
+                        //        }
+                        //   });
+                      } else {
+                        return const Center(
+                          child: Text('No Response'),
+                        );
+                      }
+                    });    }),
               ),
             ],
           ),
