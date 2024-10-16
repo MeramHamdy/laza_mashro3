@@ -163,7 +163,9 @@ class _ProductPageState extends State<ProductPage> {
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, CartScreen.id);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return CartScreen();
+                  }));
                 },
                 child: Text('Add to Cart'),
                 style: ElevatedButton.styleFrom(
