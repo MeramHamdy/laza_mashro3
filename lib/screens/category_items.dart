@@ -103,7 +103,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                             widget.category.toLowerCase())
                         .toList();
                   } else {
-                    // If category doesn't match specific ones, show all products
+                    // If category Not match show all products
                     filteredProducts = state.products;
                   }
                   return Padding(

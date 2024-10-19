@@ -1,3 +1,4 @@
+import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/screens/confirm_order.dart';
@@ -6,14 +7,26 @@ import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/drawer_screen.dart';
 
-class AddressScreen extends StatelessWidget {
+class AddressScreen extends StatefulWidget {
   AddressScreen({super.key});
 
+  @override
+  State<AddressScreen> createState() => _AddressScreenState();
+}
+
+class _AddressScreenState extends State<AddressScreen> {
   final nameController = TextEditingController();
+
   final countryController = TextEditingController();
+
   final cityController = TextEditingController();
+
   final phoneController = TextEditingController();
+
   final addressController = TextEditingController();
+  String? countryValue;
+  String? stateValue;
+  String? cityValue;
 
   @override
   Widget build(BuildContext context) {
@@ -48,33 +61,42 @@ class AddressScreen extends StatelessWidget {
                   controller: nameController,
                   hint: 'Enter your Name',
                 ),
-                Row(children: [
-                  Expanded(
-                    child: TextField(
-                      txt: 'Country',
-                      controller: countryController,
-                      hint: 'Egypt',
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: TextField(
-                    txt: 'City',
-                    controller: cityController,
-                    hint: 'Alexandria',
-                  )),
-                ]),
+
                 TextField(
                     txt: 'Phone Number',
                     controller: phoneController,
                     hint: 'Enter your phone number'),
+
+
                 TextField(
                   txt: 'Address',
                   controller: addressController,
                   hint: 'Enter your address',
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SelectState(
+                    dropdownColor: Theme.of(context).colorScheme.primary,
+                    style: TextStyle(color:mainColor),
+                    // Default country value
+
+                    onCountryChanged: (value) {
+                      setState(() {
+                        countryValue = value;
+                      });
+                    },
+                    onStateChanged: (value) {
+                      setState(() {
+                        stateValue = value;
+                      });
+                    },
+                    onCityChanged: (value) {
+                      setState(() {
+                        cityValue = value;
+                      });
+                    },
+                  ),
+                ),
               ],
             ),
           ),
