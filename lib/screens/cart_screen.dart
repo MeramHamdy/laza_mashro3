@@ -26,109 +26,122 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     return Scaffold(
-      backgroundColor:  Theme.of(context).colorScheme.tertiary,
-      appBar: AppBar(
-        backgroundColor: transparent,
-        centerTitle: true,
-        title: Text(
-          'Cart',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        appBar: AppBar(
+          backgroundColor: transparent,
+          centerTitle: true,
+          title: Text(
+            'Cart',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 19,
+            ),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                child: Icon(
+                  Icons.arrow_back_outlined,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              )),
         ),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.secondary,
-              child: Icon(
-                Icons.arrow_back_outlined,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            )),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 200,
-                child: ListView.builder(
-                  itemCount: cartProduct.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        // Use the CartItem widget to display product details
-                        Expanded(
-                          child: CartItem(
-                            imageUrl: cartProduct[index].images[0],
-                            productName: cartProduct[index].title,
-                            price: r'$ ' + cartProduct[index].price.toString(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 200,
+                  child: cartProduct.isEmpty
+                      ? const Center(
+                          child: Text(
+                            "No purchases yet",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.delete,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              // Remove the product from the cart
-                              cartProduct.removeAt(index);
-                            });
+                        )
+                      : ListView.builder(
+                          itemCount: cartProduct.length,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                // Use the CartItem widget to display product details
+                                Expanded(
+                                  child: CartItem(
+                                    imageUrl: cartProduct[index].images[0],
+                                    productName: cartProduct[index].title,
+                                    price: r'$ ' +
+                                        cartProduct[index].price.toString(),
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.delete,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      // Remove the product from the cart
+                                      cartProduct.removeAt(index);
+                                    });
+                                  },
+                                ),
+                              ],
+                            );
                           },
                         ),
-                      ],
-                    );
-                  },
                 ),
-              ),
-              Divider(),
-              SizedBox(height: 20,),
-              Text(
-                "Order Info",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                Divider(),
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    OrderInfoRow(
-                      label: 'Shipping cost',
-                      value: r'$ ' + shippingCost.toString(),
-                    ),
-                    OrderInfoRow(
-                      label: 'Total',
-                      value: r'$ ' + totalPrice.toString(),
-                      isBold: true,
-                    ),
-                  ],
+                Text(
+                  "Order Info",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      OrderInfoRow(
+                        label: 'Shipping cost',
+                        value: r'$ ' + shippingCost.toString(),
+                      ),
+                      OrderInfoRow(
+                        label: 'Total',
+                        value: r'$ ' + totalPrice.toString(),
+                        isBold: true,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
         bottomNavigationBar: Container(
-        width: double.infinity,
-        height: 75,
-        padding: const EdgeInsets.only(top: 10),
-        color: mainColor,
-        child: GestureDetector(
-        onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return AddressScreen();
-        }));
-        },
-        child: Text(textAlign: TextAlign.center,'Checkout'),
-    ),
-        ) );
+          width: double.infinity,
+          height: 75,
+          padding: const EdgeInsets.only(top: 10),
+          color: mainColor,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AddressScreen();
+              }));
+            },
+            child: Text(textAlign: TextAlign.center, 'Checkout'),
+          ),
+        ));
   }
 }

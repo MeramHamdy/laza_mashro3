@@ -44,6 +44,9 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^2.3.2
   country_state_city_picker: ^1.2.8
+  email_validator: ^3.0.0
+  modal_progress_hud_nsn: ^0.5.1
+  flutter_verification_code: ^1.1.7
 
 
 dev_dependencies:

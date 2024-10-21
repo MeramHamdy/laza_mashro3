@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/widgets/review_widget.dart';
-import 'package:laza_mashro3/widgets/reviews.dart';
+import 'package:laza_mashro3/models/reviews.dart';
 import 'package:laza_mashro3/widgets/star_rating_widget.dart';
 import '../models/product.dart';
 import '../theme_color/Colors.dart';

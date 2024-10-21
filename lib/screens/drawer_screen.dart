@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:laza_mashro3/models/info_model.dart';
 import 'package:laza_mashro3/screens/about_app.dart';
-import 'package:laza_mashro3/screens/address_screen.dart';
 import 'package:laza_mashro3/screens/cart_screen.dart';
-import 'package:laza_mashro3/screens/category_items.dart';
 import 'package:laza_mashro3/screens/log_in_screen.dart';
-import 'package:laza_mashro3/screens/review_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/screens/privacy_policy.dart';
 import 'package:provider/provider.dart';
-//drawer
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});
@@ -41,14 +38,14 @@ class DrawerScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const ListTile(
+             ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
               ),
               title: Text(
-                "Mera Hamdy ",
+                InfoModel.userName ?? "User Name" ,
               ),
-              subtitle: Text("merahamdy11@gmail.com"),
+              subtitle: Text(InfoModel.userEmail ?? "user@gmail.com"),
             ),
             const SizedBox(
               height: 20,

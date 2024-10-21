@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza_mashro3/widgets/reviews.dart';
+import 'package:laza_mashro3/models/reviews.dart';
 
 class SingleReviewWidget extends StatelessWidget {
   Reviews reviewModel;
@@ -35,7 +35,8 @@ class SingleReviewWidget extends StatelessWidget {
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                       SizedBox(width: 8),
-                      Text(reviewModel.date!,
+                      Text(
+                          "${DateTime.parse(reviewModel.date!).year}-${DateTime.parse(reviewModel.date!).month}-${DateTime.parse(reviewModel.date!).day}",
                           style: TextStyle(fontSize: 14, color: Colors.grey)),
                     ],
                   ),

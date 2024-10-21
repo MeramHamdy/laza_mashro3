@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laza_mashro3/cubits/add_review.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:provider/provider.dart';
-import '../widgets/reviews.dart';
+import '../models/reviews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddReview extends StatefulWidget {

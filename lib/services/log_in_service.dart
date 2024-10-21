@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/helper/api.dart';
 import 'package:laza_mashro3/models/authentication_model.dart';
 
@@ -13,7 +14,7 @@ class LogInService {
     });
 
     Map<String, dynamic> data = await Api().post(
-      url: 'http://192.168.1.4/project/doctor/signin.php',
+      url: baseUrl + 'signin.php',
       body: jsonBody,
     );
 

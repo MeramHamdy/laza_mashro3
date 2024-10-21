@@ -5,7 +5,7 @@ import 'package:laza_mashro3/screens/confirm_order.dart';
 import 'package:laza_mashro3/screens/home_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
-import 'package:laza_mashro3/drawer_screen.dart';
+import 'package:laza_mashro3/screens/drawer_screen.dart';
 
 class AddressScreen extends StatefulWidget {
   AddressScreen({super.key});
@@ -76,7 +76,7 @@ class _AddressScreenState extends State<AddressScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SelectState(
-                    dropdownColor: Theme.of(context).colorScheme.primary,
+                    dropdownColor: white,
                     style: TextStyle(color:mainColor),
                     // Default country value
 

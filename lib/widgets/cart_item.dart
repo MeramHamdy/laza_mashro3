@@ -35,19 +35,6 @@ class CartItem extends StatelessWidget {
                 ],
               ),
             ),
-            // IconButton(
-            //   icon: Icon(Icons.remove_circle_outline),
-            //   onPressed: () {
-            //     // Decrease quantity
-            //   },
-            // ),
-            // Text('1'),
-            // IconButton(
-            //   icon: Icon(Icons.add_circle_outline),
-            //   onPressed: () {
-            //     // Increase quantity
-            //   },
-            // ),
           ],
         ),
         SizedBox(

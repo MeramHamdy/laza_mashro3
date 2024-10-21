@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_mashro3/widgets/reviews.dart';
+import 'package:laza_mashro3/models/reviews.dart';
 
 class AddReviewCubit extends Cubit<List<Reviews>> {
   AddReviewCubit() : super([]);

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:laza_mashro3/helper/check_login_signup.dart';
 
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {
@@ -22,6 +23,42 @@ class Api {
   }
 
   Future<dynamic> post({
+    required String url,
+    @required dynamic body,
+    String? token,
+  }) async {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
+
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+
+    try {
+      http.Response response = await http.post(
+        Uri.parse(url),
+        body: body,
+        headers: headers,
+      );
+
+      print('Response Status Code: ${response.statusCode}');
+      print('Response Body: ${response.body}');
+
+      if (response.statusCode == 200) {
+        await checkLoginOrSignup(url, response);
+
+        return jsonDecode(response.body);
+      } else {
+        throw Exception(
+            'there is a problem with status code ${response.statusCode} with body ${response.body}');
+      }
+    } catch (e) {
+      print('Error during API call: ${e.toString()}');
+    }
+  }
+
+  Future<dynamic> postForget({
     required String url,
     @required dynamic body,
     String? token,

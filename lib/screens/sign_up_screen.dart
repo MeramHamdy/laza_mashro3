@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/helper/show_snack_bar.dart';
 import 'package:laza_mashro3/models/authentication_model.dart';
+import 'package:laza_mashro3/models/info_shared_preferences.dart';
 import 'package:laza_mashro3/screens/log_in_screen.dart';
 import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/services/sign_up_service.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
+import 'package:laza_mashro3/widgets/custom_text_form_field_widget.dart';
+import 'package:laza_mashro3/widgets/password_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -16,6 +20,22 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController userName = TextEditingController();
   TextEditingController gmail = TextEditingController();
   TextEditingController pass = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    checkSignupStatus();
+  }
+
+  void checkSignupStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    bool isSignUp = prefs.getBool('isSignUp') ?? false;
+    if (isLoggedIn || isSignUp) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const BottomNavBar()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,75 +76,23 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   SizedBox(height: 120),
-                  // Username TextField
-                  TextField(
-                    controller: userName,
-                    decoration: InputDecoration(
-                      labelText: 'Username',
-                      // hintText: 'Esther Howard',
-                      // suffixIcon: Icon(Icons.check, color: Colors.green),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                  CustomTextFormField(
+                    hintText: 'UserName',
+                    preIcon: Icons.person,
+                    myController: userName,
+                    errorText: 'Please enter your name',
                   ),
-                  SizedBox(height: 20),
-                  // Password TextField
-                  TextField(
-                    controller: pass,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      // hintText: 'HJ@#9783kja',
-                      // suffixIcon: Row(
-                      //   mainAxisSize: MainAxisSize.min,
-                      //   children: [
-                      //     Text(
-                      //       'Strong',
-                      //       style: TextStyle(color: Colors.green),
-                      //     ),
-                      //     Icon(Icons.check, color: Colors.green),
-                      //   ],
-                      // ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                  CustomTextFormField(
+                    hintText: 'email',
+                    preIcon: Icons.email,
+                    myController: gmail,
+                    errorText: 'Please enter your email',
                   ),
-                  SizedBox(height: 20),
-                  // Email Address TextField
-                  TextField(
-                    controller: gmail,
-                    decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      // hintText: 'bill.sanders@example.com',
-                      // suffixIcon: Icon(Icons.check, color: Colors.green),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                  PasswordField(
+                    myController: pass,
+                    errText: "please enter password",
+                    hintText: "password",
                   ),
-                  SizedBox(height: 20),
-                  // Remember me switch
-                  // Row(
-                  //   children: [
-                  //     Text('Remember me'),
-                  //     Spacer(),
-                  //     Switch(
-                  //       value: true,
-                  //       onChanged: (value) {
-                  //         if (value) {
-                  //           setState(() {
-                  //             activeColor:
-                  //             Colors.green;
-                  //           });
-                  //         }
-                  //       },
-                  //     ),
-                  //   ],
-                  // ),
-
-                  // Sign Up Button
                 ],
               ),
             ),
@@ -137,9 +105,9 @@ class _SignUpPageState extends State<SignUpPage> {
           color: mainColor,
           child: GestureDetector(
             onTap: () async {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return LoginPage();
-              }));
+              // Navigator.push(context, MaterialPageRoute(builder: (context) {
+              //   return LoginPage();
+              // }));
               if (formKey.currentState!.validate()) {
                 // showSnackBar(context, 'Failed to connect with api');
                 try {
@@ -147,18 +115,19 @@ class _SignUpPageState extends State<SignUpPage> {
                     userName: userName.text,
                     gmail: gmail.text,
                     pass: pass.text,
+                    profilePicture: 'laza_mashro3-master/assets/yasmin.jpg',
                   );
                   if (model.status == 'success') {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return BottomNavBar();
+                      return LoginPage();
                     }));
+                    await UserInfo().saveUserSignUp(
+                        userName: userName.text,
+                        userPassword: pass.text,
+                        userEmail: gmail.text);
                   } else if (model.message == 'Email already exists') {
                     showSnackBar(context, 'Email already exists');
-                  } else if (model.message ==
-                      'Failed to send verification code') {
-                    showSnackBar(context,
-                        'Failed to send verification code, no connection');
                   }
                 } catch (e) {
                   print(e.toString());

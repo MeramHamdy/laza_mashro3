@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:laza_mashro3/widgets/reviews.dart';
+import 'package:laza_mashro3/models/reviews.dart';
 
 part 'product.g.dart';
 
