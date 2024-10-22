@@ -2,10 +2,7 @@ import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/screens/confirm_order.dart';
-import 'package:laza_mashro3/screens/home_screen.dart';
-import 'package:laza_mashro3/screens/nav_bar_screen.dart';
 import 'package:laza_mashro3/theme_color/Colors.dart';
-import 'package:laza_mashro3/screens/drawer_screen.dart';
 
 class AddressScreen extends StatefulWidget {
   AddressScreen({super.key});
@@ -61,13 +58,10 @@ class _AddressScreenState extends State<AddressScreen> {
                   controller: nameController,
                   hint: 'Enter your Name',
                 ),
-
                 TextField(
                     txt: 'Phone Number',
                     controller: phoneController,
                     hint: 'Enter your phone number'),
-
-
                 TextField(
                   txt: 'Address',
                   controller: addressController,
@@ -77,7 +71,7 @@ class _AddressScreenState extends State<AddressScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: SelectState(
                     dropdownColor: white,
-                    style: TextStyle(color:mainColor),
+                    style: TextStyle(color: mainColor),
                     // Default country value
 
                     onCountryChanged: (value) {

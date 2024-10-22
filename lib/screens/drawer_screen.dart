@@ -23,19 +23,18 @@ class _DrawerScreenState extends State<DrawerScreen> {
   @override
   void initState() {
     super.initState();
-    _loadUserInfo(); // Load user info when the page is initialized
+    _loadUserInfo();
   }
-  // Function to load user information
+
   Future<void> _loadUserInfo() async {
-    await InfoModel().info(); // Load the user info into the static variables
+    await InfoModel().info();
     setState(() {
       userName = InfoModel.userName;
       userEmail = InfoModel.userEmail;
     });
-
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemesProvider>(context);
 
@@ -62,17 +61,16 @@ class _DrawerScreenState extends State<DrawerScreen> {
             const SizedBox(
               height: 20,
             ),
-             ListTile(
+            ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.person),
               ),
-              title:Text(
+              title: Text(
                 '${userName ?? 'Loading...'}',
               ),
-
-               subtitle: Text(
-                 ' ${userEmail ?? 'Loading...'}',
-               ),
+              subtitle: Text(
+                ' ${userEmail ?? 'Loading...'}',
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -116,30 +114,30 @@ class _DrawerScreenState extends State<DrawerScreen> {
               txt: "About App",
               widgetName: AboutApp(),
             ),
-                GestureDetector(
-                  onTap: () async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    await prefs.clear(); // Clear stored data
+            GestureDetector(
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.clear(); // Clear stored data
 
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => LoginPage()));
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.logout,
-                        color: mainColor,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Logout",
-                        style: const TextStyle(fontSize: 15),
-                      ),
-                    ],
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.logout,
+                    color: mainColor,
                   ),
-                ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Logout",
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(
               height: 50,
             ),

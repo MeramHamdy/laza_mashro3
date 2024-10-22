@@ -3,13 +3,9 @@ import 'package:laza_mashro3/cubits/product_state.dart';
 import 'package:laza_mashro3/services/product_dio.dart';
 
 class ProductCubit extends Cubit<ProductState> {
-//constructor //initial value of state is [] -->list empty
-//call product service in cubit
   ProductCubit() : super(ProductInitial()) {
-    //call to data
     getProducts();
   }
-// obj from prduct service
 
   final ProductService productService = ProductService();
 

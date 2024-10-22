@@ -61,7 +61,6 @@ class AboutApp extends StatelessWidget {
                           height: 120,
                         ),
                         const SizedBox(height: 8),
-                        //!  to It cannot be empty // if empty show red screen &exception
                         Text(
                           data[index]["name"]!,
                           style: const TextStyle(fontWeight: FontWeight.bold),

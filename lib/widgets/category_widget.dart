@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/models/product.dart';
-import 'package:laza_mashro3/theme_color/Colors.dart';
 
 class CategrayWidget extends StatelessWidget {
   final Product product;

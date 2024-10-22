@@ -16,7 +16,7 @@ class ConfirmOrder extends StatelessWidget {
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) =>  BottomNavBar()));
+                    builder: (BuildContext context) => BottomNavBar()));
               },
               icon: CircleAvatar(
                 backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -56,7 +56,7 @@ class ConfirmOrder extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) =>  CartScreen()));
+                    builder: (BuildContext context) => CartScreen()));
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
