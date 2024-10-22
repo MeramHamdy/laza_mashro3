@@ -6,7 +6,9 @@ import 'package:laza_mashro3/screens/drawer_screen.dart';
 import 'package:laza_mashro3/models/product.dart';
 import 'package:laza_mashro3/screens/cart_screen.dart';
 import 'package:laza_mashro3/screens/category_items.dart';
+import 'package:laza_mashro3/screens/product_screen.dart';
 import 'package:laza_mashro3/screens/review_screen.dart';
+import 'package:laza_mashro3/services/product_service.dart';
 
 import 'package:laza_mashro3/widgets/category_card.dart';
 import 'package:laza_mashro3/widgets/category_widget.dart';
@@ -145,22 +147,41 @@ class _HomeScreenState extends State<HomeScreen> {
                                   .toLowerCase()
                                   .contains(searchQuery.toLowerCase()))
                               .toList();
-                          return SizedBox(
-                            height: MediaQuery
-                                .of(context)
-                                .size
-                                .height,
-                            child: GridView.count(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 10.0,
-                                mainAxisSpacing: 10.0,
-                                padding: const EdgeInsets.all(5),
-                                children:
-                                List.generate(filteredProducts.length, (index) {
-                                  final product = filteredProducts[index];
-                                  return CategrayWidget(
-                                      product: product, onTap: () {});
-                                })),
+                          return Column(
+                            children: [
+                              Expanded(
+                                child: GridView.count(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 10.0,
+                                    mainAxisSpacing: 10.0,
+                                    padding: const EdgeInsets.all(5),
+                                    children:
+                                    List.generate(filteredProducts.length, (index) {
+                                      final product = filteredProducts[index];
+                                      return CategrayWidget(
+                                          product: product,
+                                          onTap: () async {
+                                            try {
+                                              setState(() {});
+                                              Product model =
+                                              await ProductService()
+                                                  .productInfo(
+                                                  productId: product.id);
+                                              setState(() {});
+                                              print(model.title);
+                                              print(model.id);
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return ProductPage(model);
+                                                      }));
+                                            } catch (e) {
+                                              print(e.toString());
+                                            }
+                                          });
+                                    })),
+                              ),
+                            ],
                           );
                         } else {
                           return GridView(

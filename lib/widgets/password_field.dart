@@ -36,7 +36,7 @@ class _PasswordFieldState extends State<PasswordField> {
         },
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Theme.of(context).colorScheme.secondary,
           isDense: true,
           prefixIcon: Icon(
             Icons.lock,
@@ -52,13 +52,13 @@ class _PasswordFieldState extends State<PasswordField> {
             icon: Icon(visible ? Icons.visibility : Icons.visibility_off),
           ),
           hintText: widget.hintText,
-          hintStyle: const TextStyle(
-            color: Colors.black26,
+          hintStyle:  TextStyle(
+            color: greyDark,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
-              color: Colors.black,
+              color: black,
             ),
           ),
           focusedBorder: OutlineInputBorder(

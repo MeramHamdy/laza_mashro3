@@ -29,7 +29,9 @@ class _NewPasswordViewState extends State<NewPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         appBar: AppBar(
+          backgroundColor: transparent,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);

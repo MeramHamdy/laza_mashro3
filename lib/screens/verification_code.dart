@@ -26,7 +26,10 @@ class _VerificationCodeViewState extends State<VerificationCodeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+
         appBar: AppBar(
+          backgroundColor: transparent,
           leading: IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

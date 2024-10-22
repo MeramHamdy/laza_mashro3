@@ -32,7 +32,7 @@ class _ProductPageState extends State<ProductPage> {
       backgroundColor:Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: transparent,
         actions: [
           Container(
             width: 45,
@@ -68,111 +68,114 @@ class _ProductPageState extends State<ProductPage> {
               ),
             )),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.network(
-                widget.productModel.images[_currentImageIndex],
-                height: 150,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  widget.productModel.title,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Image.network(
+                  widget.productModel.images[_currentImageIndex],
+                  height: 150,
                 ),
-                Spacer(),
-                Column(
-                  children: [
-                    Text(
-                      "Price",
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.productModel.title,
                       style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      widget.productModel.price.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:
-                    List.generate(widget.productModel.images.length, (index) {
-                  return GestureDetector(
-                    onTap: () => _changeImage(index),
-                    child: Image.network(
-                      widget.productModel.images[index],
-                      height: 50,
-                    ),
-                  );
-                }),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'Description:',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget.productModel.description,
-              style: TextStyle(fontSize: 15),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Reviews",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return ReviewScreen(
-                        product: widget.productModel,
-                      );
-                    }));
-                  },
-                  child: Text(
-                    "View All",
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
                   ),
+                  Column(
+                    children: [
+                      Text(
+                        "Price",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        widget.productModel.price.toString(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children:
+                      List.generate(widget.productModel.images.length, (index) {
+                    return GestureDetector(
+                      onTap: () => _changeImage(index),
+                      child: Image.network(
+                        widget.productModel.images[index],
+                        height: 50,
+                      ),
+                    );
+                  }),
                 ),
-              ],
-            ),
-            SizedBox(height: 8),
-            SingleReviewWidget(
-              reviewModel: widget.productModel.reviews[0],
-            ),
-
-          ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Description:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget.productModel.description,
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Reviews",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ReviewScreen(
+                          product: widget.productModel,
+                        );
+                      }));
+                    },
+                    child: Text(
+                      "View All",
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              SingleReviewWidget(
+                reviewModel: widget.productModel.reviews[0],
+              ),
+        
+            ],
+          ),
         ),
       ),
     bottomNavigationBar: Container(

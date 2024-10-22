@@ -31,7 +31,10 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
+
           appBar: AppBar(
+            backgroundColor: transparent,
             automaticallyImplyLeading: false,
             leading: IconButton(
                 onPressed: () {
@@ -42,6 +45,7 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
                 icon: CircleAvatar(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   child: Icon(
+
                     Icons.arrow_back_outlined,
                     color: Theme.of(context).colorScheme.primary,
                   ),

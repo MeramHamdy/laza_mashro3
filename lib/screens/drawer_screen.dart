@@ -44,8 +44,7 @@ class DrawerScreen extends StatelessWidget {
                 child: Icon(Icons.person),
               ),
               title: Text(
-                  InfoModel.userName != null ? InfoModel.userName! : 'User'
-
+                InfoModel.userName ?? "User Name" ,
               ),
               subtitle: Text(InfoModel.userEmail ?? "user@gmail.com"),
             ),
@@ -92,10 +91,10 @@ class DrawerScreen extends StatelessWidget {
               widgetName: AboutApp(),
             ),
                 GestureDetector(
-
                   onTap: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     await prefs.clear(); // Clear stored data
+
                     Navigator.push(
                         context, MaterialPageRoute(builder: (context) => LoginPage()));
                   },

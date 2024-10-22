@@ -39,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
         },
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Theme.of(context).colorScheme.secondary,
           isDense: true,
           prefixIcon: Icon(
             preIcon,
@@ -47,13 +47,13 @@ class CustomTextFormField extends StatelessWidget {
           ),
           // if(preIcon != null)
           hintText: hintText,
-          hintStyle: const TextStyle(
-            color: Colors.black26,
+          hintStyle:  TextStyle(
+            color: greyDark,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
-              color: Colors.black,
+              color: black,
             ),
           ),
           focusedBorder: OutlineInputBorder(
