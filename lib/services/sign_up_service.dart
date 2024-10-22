@@ -8,13 +8,11 @@ class SignUpService {
     required String userName,
     required String gmail,
     required String pass,
-    required String profilePicture,
   }) async {
     final jsonBody = jsonEncode({
       "username": userName,
       "email": gmail,
       "password": pass,
-      'profile_picture': profilePicture,
     });
     Map<String, dynamic> data;
     try {

@@ -115,7 +115,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     userName: userName.text,
                     gmail: gmail.text,
                     pass: pass.text,
-                    profilePicture: 'laza_mashro3-master/assets/yasmin.jpg',
                   );
                   if (model.status == 'success') {
                     Navigator.push(context,

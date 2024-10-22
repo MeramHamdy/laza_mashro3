@@ -7,6 +7,8 @@ class InfoModel {
   Future<void> info() async {
     userName = await UserInfo().getUserName();
     userEmail = await UserInfo().getUserEmail();
-    log(userEmail ?? 'No email');
+    log('User Name: $userName');
+    log('User Email: $userEmail');
+
   }
 }

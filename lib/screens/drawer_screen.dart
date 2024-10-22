@@ -9,10 +9,33 @@ import 'package:laza_mashro3/screens/privacy_policy.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DrawerScreen extends StatelessWidget {
+class DrawerScreen extends StatefulWidget {
   const DrawerScreen({super.key});
 
   @override
+  State<DrawerScreen> createState() => _DrawerScreenState();
+}
+
+class _DrawerScreenState extends State<DrawerScreen> {
+  String? userName;
+  String? userEmail;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserInfo(); // Load user info when the page is initialized
+  }
+  // Function to load user information
+  Future<void> _loadUserInfo() async {
+    await InfoModel().info(); // Load the user info into the static variables
+    setState(() {
+      userName = InfoModel.userName;
+      userEmail = InfoModel.userEmail;
+    });
+
+  }
+
+    @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemesProvider>(context);
 
@@ -43,10 +66,13 @@ class DrawerScreen extends StatelessWidget {
               leading: CircleAvatar(
                 child: Icon(Icons.person),
               ),
-              title: Text(
-                InfoModel.userName ?? "User Name" ,
+              title:Text(
+                '${userName ?? 'Loading...'}',
               ),
-              subtitle: Text(InfoModel.userEmail ?? "user@gmail.com"),
+
+               subtitle: Text(
+                 ' ${userEmail ?? 'Loading...'}',
+               ),
             ),
             const SizedBox(
               height: 20,
