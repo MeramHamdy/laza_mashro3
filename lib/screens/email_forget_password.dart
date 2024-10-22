@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:laza_mashro3/constatnt.dart';
 import 'package:laza_mashro3/helper/show_snack_bar.dart';
 import 'package:laza_mashro3/models/authentication_model.dart';
+import 'package:laza_mashro3/screens/log_in_screen.dart';
 import 'package:laza_mashro3/screens/verification_code.dart';
 import 'package:laza_mashro3/services/forget_password_service.dart';
-import 'package:laza_mashro3/widgets/custom_button_widget.dart';
+import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/widgets/custom_text_form_field_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -30,94 +31,98 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          title: const Text('Forgot Password'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 32,
-            // vertical: 60,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return LoginPage();
+                  }));
+                },
+                icon: CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: Icon(
+                    Icons.arrow_back_outlined,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                )),
           ),
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/6430852.webp',
-                    height: 210,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 450,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(20),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Text('Forgot Password',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Image.asset(
+                      'assets/forget password.png',
+                      height: 210,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 30,
-                      ),
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Enter Your Email to \n    Change your password',
-                            style: TextStyle(
-                              fontSize: 17,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 45,
-                          ),
-                          CustomTextFormField(
-                              errorText: 'Your email is required',
-                              myController: gmail,
-                              hintText: "Your email",
-                              preIcon: Icons.email_rounded),
-                          const SizedBox(
-                            height: 100,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              CustomButton(
-                                  text: 'confirm',
-                                  onTap: () async {
-                                    if (formKey.currentState!.validate()) {
-                                      AuthenticationModel model =
-                                          await ForgetPasswordService()
-                                              .forgetPassword(
-                                        email: gmail.text,
-                                        url: baseUrl + "forgetpassword.php",
-                                      );
-                                      emailForgetPassword(model, context);
-                                    }
-                                  }),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              CustomButton(
-                                  text: 'Cancel',
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  }),
-                            ],
-                          )
-                        ],
-                      ),
+                    const SizedBox(
+                      height: 60,
                     ),
-                  ),
-                ],
+                    Column(
+                      children: [
+                        CustomTextFormField(
+                            errorText: 'Your email is required',
+                            myController: gmail,
+                            hintText: "Your email",
+                            preIcon: Icons.email_rounded),
+                        const SizedBox(
+                          height: 180,
+                        ),
+                        Text(
+                          "Please write your email to receive a \n verification code to set a new password",
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+          bottomNavigationBar: Container(
+            width: double.infinity,
+            height: 75,
+            padding: const EdgeInsets.only(top: 10),
+            color: mainColor,
+            child: GestureDetector(
+              onTap: () async {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return VerificationCodeView(
+                //         verificationCode: 123456,
+                //         email: gmail.text,
+                //       );
+                //     },
+                //   ),
+                // );
+                if (formKey.currentState!.validate()) {
+                  AuthenticationModel model =
+                  await ForgetPasswordService().forgetPassword(
+                    email: gmail.text,
+                    url: baseUrl + "forgetpassword.php",
+                  );
+                  emailForgetPassword(model, context);
+                }
+              },
+              child: Text(
+                'Confirm Mail',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+          )),
     );
   }
 

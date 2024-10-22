@@ -34,8 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   void checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-    bool isSignUp = prefs.getBool('isSignUp') ?? false;
-    if (isLoggedIn || isSignUp) {
+    if (isLoggedIn ) {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const BottomNavBar()));
     }

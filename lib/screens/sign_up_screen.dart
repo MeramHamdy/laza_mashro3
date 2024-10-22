@@ -72,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Text(
                       "Sign Up",
                       style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(height: 120),
@@ -120,8 +120,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   if (model.status == 'success') {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return LoginPage();
-                    }));
+                          return LoginPage();
+                        }));
                     await UserInfo().saveUserSignUp(
                         userName: userName.text,
                         userPassword: pass.text,

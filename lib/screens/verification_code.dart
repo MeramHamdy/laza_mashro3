@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laza_mashro3/helper/show_snack_bar.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:laza_mashro3/screens/email_forget_password.dart';
 import 'package:laza_mashro3/screens/new_password.dart';
+import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/widgets/custom_button_widget.dart';
 
 class VerificationCodeView extends StatefulWidget {
@@ -24,123 +26,117 @@ class _VerificationCodeViewState extends State<VerificationCodeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 32,
-          // vertical: 10,
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return EmailOfForgetPasswordView();
+                }));
+              },
+              icon: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                child: Icon(
+                  Icons.arrow_back_outlined,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              )),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/images/istockphoto-1338629648-612x612.jpg',
-                height: 270,
-              ),
-              Container(
-                height: 470,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 40,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Text(
+                  'Verification Code',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                   ),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Verification Code',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                ),
+                Image.asset(
+                  'assets/forget password.png',
+                  height: 270,
+                ),
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    VerificationCode(
+                      itemSize: 47,
+                      length: 6,
+                      fillColor: mainColor,
+                      onCompleted: (String value) {
+                        setState(() {
+                          code = value;
+                        });
+                      },
+                      onEditing: (bool value) {
+                        setState(() {
+                          onEditing = value;
+                        });
+                        if (!onEditing) FocusScope.of(context).unfocus();
+                      },
+                    ),
+                    const SizedBox(
+                      height: 180,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don\'t receive the code ?  ',
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Enter the code sent to your email.',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      VerificationCode(
-                        itemSize: 47,
-                        length: 6,
-                        fillColor: Colors.white,
-                        onCompleted: (String value) {
-                          setState(() {
-                            code = value;
-                          });
-                        },
-                        onEditing: (bool value) {
-                          setState(() {
-                            onEditing = value;
-                          });
-                          if (!onEditing) FocusScope.of(context).unfocus();
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Don\'t receive the code ?',
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            'Resend',
                             style: const TextStyle(
-                              color: Colors.black87,
-                              fontSize: 17,
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              'Resend',
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 90,
-                      ),
-                      CustomButton(
-                          text: 'Verify',
-                          onTap: () async {
-                            // Navigator.pushNamed(context, widget.nextView!);
-
-                            if (widget.verificationCode.toString() == code) {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return NewPasswordView(
-                                  gmail: widget.email!,
-                                );
-                              }));
-                            } else if (code == null) {
-                              showSnackBar(context, 'Please enter the code');
-                            } else {
-                              showSnackBar(context, 'Invalid code');
-                            }
-                          }),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
+        bottomNavigationBar: Container(
+          width: double.infinity,
+          height: 75,
+          padding: const EdgeInsets.only(top: 10),
+          color: mainColor,
+          child: GestureDetector(
+            onTap: () async {
+              if (widget.verificationCode.toString() == code) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NewPasswordView(
+                    gmail: widget.email!,
+                  );
+                }));
+              } else if (code == null) {
+                showSnackBar(context, 'Please enter the code');
+              } else {
+                showSnackBar(context, 'Invalid code');
+              }
+            },
+            child: Text(
+              'Confirm Code',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ));
   }
 }

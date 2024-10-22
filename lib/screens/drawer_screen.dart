@@ -7,6 +7,7 @@ import 'package:laza_mashro3/theme_color/Colors.dart';
 import 'package:laza_mashro3/theme_color/themes_provider.dart';
 import 'package:laza_mashro3/screens/privacy_policy.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});
@@ -43,7 +44,8 @@ class DrawerScreen extends StatelessWidget {
                 child: Icon(Icons.person),
               ),
               title: Text(
-                InfoModel.userName ?? "User Name" ,
+                  InfoModel.userName != null ? InfoModel.userName! : 'User'
+
               ),
               subtitle: Text(InfoModel.userEmail ?? "user@gmail.com"),
             ),
@@ -89,11 +91,30 @@ class DrawerScreen extends StatelessWidget {
               txt: "About App",
               widgetName: AboutApp(),
             ),
-            Roow(
-              icoon: Icons.logout,
-              txt: "Logout",
-              widgetName: LoginPage(),
-            ),
+                GestureDetector(
+
+                  onTap: () async {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    await prefs.clear(); // Clear stored data
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        color: mainColor,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Logout",
+                        style: const TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
+                ),
             const SizedBox(
               height: 50,
             ),
